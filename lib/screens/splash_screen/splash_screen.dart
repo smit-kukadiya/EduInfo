@@ -1,4 +1,4 @@
-import 'package:new_eduinfo/screens/login_screen/login_screen.dart';
+import 'package:EduInfo/screens/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 

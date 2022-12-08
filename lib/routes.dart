@@ -1,10 +1,10 @@
-import 'package:new_eduinfo/screens/login_screen/login_screen.dart';
-import 'package:new_eduinfo/screens/splash_screen/splash_screen.dart';
-import 'package:new_eduinfo/screens/college_cal_screen/college_cal_screen.dart';
-import 'package:new_eduinfo/screens/gallery_screen/gallery_screen.dart';
-import 'package:new_eduinfo/screens/time_table_screen/time_table_screen.dart';
-import 'package:new_eduinfo/screens/result_screen/result_screen.dart';
-import 'package:new_eduinfo/screens/events_screen/events_screen.dart';
+import 'package:EduInfo/screens/login_screen/login_screen.dart';
+import 'package:EduInfo/screens/splash_screen/splash_screen.dart';
+import 'package:EduInfo/screens/college_cal_screen/college_cal_screen.dart';
+import 'package:EduInfo/screens/gallery_screen/gallery_screen.dart';
+import 'package:EduInfo/screens/time_table_screen/time_table_screen.dart';
+import 'package:EduInfo/screens/result_screen/result_screen.dart';
+import 'package:EduInfo/screens/events_screen/events_screen.dart';
 import 'screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'screens/assignment_screen/assignment_screen.dart';

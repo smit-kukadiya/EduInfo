@@ -1,4 +1,4 @@
-import 'package:new_eduinfo/constants.dart';
+import 'package:EduInfo/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'data/fee_data.dart';

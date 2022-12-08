@@ -1,5 +1,5 @@
-import 'package:new_eduinfo/constants.dart';
-import 'package:new_eduinfo/screens/datesheet_screen/data/datesheet_data.dart';
+import 'package:EduInfo/constants.dart';
+import 'package:EduInfo/screens/datesheet_screen/data/datesheet_data.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
