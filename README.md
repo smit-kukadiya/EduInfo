@@ -1,6 +1,5 @@
-# new_eduinfo
-
-A new Flutter project.
+# EduInfo
+    College application for student, parent, teacher
 
 ## Getting Started
 
