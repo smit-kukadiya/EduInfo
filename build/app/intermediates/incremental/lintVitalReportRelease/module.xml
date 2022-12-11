@@ -1,11 +1,11 @@
 <lint-module
     format="1"
-    dir="C:\Users\smitk\Development\projects\new_eduinfo\android\app"
+    dir="C:\Users\smitk\Development\projects\EduInfo\android\app"
     name=":app"
     type="APP"
     maven="android:app:"
     gradle="7.1.2"
-    buildFolder="C:\Users\smitk\Development\projects\new_eduinfo\build\app"
+    buildFolder="C:\Users\smitk\Development\projects\EduInfo\build\app"
     bootClassPath="C:\Users\smitk\AppData\Local\Android\sdk\platforms\android-31\android.jar;C:\Users\smitk\AppData\Local\Android\sdk\build-tools\30.0.3\core-lambda-stubs.jar"
     javaSourceLevel="1.8"
     compileTarget="android-31">

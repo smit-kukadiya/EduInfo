@@ -181,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
       keyboardType: TextInputType.emailAddress,
       style: kInputTextStyle,
       decoration: InputDecoration(
-        labelText: 'Mobile Number',
+        labelText: 'Email',
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (value) {

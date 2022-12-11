@@ -5,10 +5,12 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
 final imageList = [
-    'http://gmit.edu.in/assets/img/pressnotes/110.JPG',
-    'http://gmit.edu.in/assets/img/pressnotes/91.jpeg',
-    'http://gmit.edu.in/assets/img/pressnotes/86.jpeg',
-    'http://gmit.edu.in/assets/img/pressnotes/76.jpg',
+    'assets/images/gal1.jpg',
+    'assets/images/gal2.jpg',
+    'assets/images/gal3.jpg',
+    'assets/images/gal4.jpg',
+    'assets/images/gal5.jpg',    
+    'assets/images/gal6.jpeg',
   ];
 
 class GalleryScreen extends StatelessWidget {
@@ -35,7 +37,7 @@ class GalleryScreen extends StatelessWidget {
                     builder: (context, index) {
                       return PhotoViewGalleryPageOptions(
                         basePosition: Alignment.center,
-                        imageProvider: NetworkImage(imageList[index]),
+                        imageProvider: AssetImage(imageList[index]),
                         minScale: PhotoViewComputedScale.contained * 0.8,
                         maxScale: PhotoViewComputedScale.covered * 2,
                       );

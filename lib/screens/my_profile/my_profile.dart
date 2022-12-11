@@ -60,10 +60,10 @@ class MyProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'abc xyz',
+                        'ABC XYZ',
                         style: Theme.of(context).textTheme.subtitle1,
                       ),
-                      Text('B.E. in IT | Roll no: 201290116014',
+                      Text('B.E. in IT | Roll no: 1',
                           style: Theme.of(context).textTheme.subtitle2),
                     ],
                   )

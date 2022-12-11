@@ -1,13 +1,13 @@
 <libraries>
   <library
-      name="__local_aars__:C:\Users\smitk\Development\projects\new_eduinfo\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
-      jars="C:\Users\smitk\Development\projects\new_eduinfo\build\app\intermediates\flutter\release\libs.jar"
-      resolved="__local_aars__:C:\Users\smitk\Development\projects\new_eduinfo\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
+      name="__local_aars__:C:\Users\smitk\Development\projects\EduInfo\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
+      jars="C:\Users\smitk\Development\projects\EduInfo\build\app\intermediates\flutter\release\libs.jar"
+      resolved="__local_aars__:C:\Users\smitk\Development\projects\EduInfo\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
   <library
-      name="C:\Users\smitk\Development\projects\new_eduinfo\android@@:path_provider_android::release"
-      jars="C:\Users\smitk\Development\projects\new_eduinfo\build\path_provider_android\.transforms\8aa6950ae04824741891c717c9fa4cba\transformed\out\jars\classes.jar"
+      name="C:\Users\smitk\Development\projects\EduInfo\android@@:path_provider_android::release"
+      jars="C:\Users\smitk\Development\projects\EduInfo\build\path_provider_android\.transforms\f4cb1ab3a0c7457abc5b4ef0cab925c0\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"
-      folder="C:\Users\smitk\Development\projects\new_eduinfo\build\path_provider_android\.transforms\8aa6950ae04824741891c717c9fa4cba\transformed\out"
+      folder="C:\Users\smitk\Development\projects\EduInfo\build\path_provider_android\.transforms\f4cb1ab3a0c7457abc5b4ef0cab925c0\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

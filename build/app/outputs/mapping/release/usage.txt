@@ -1638,6 +1638,7 @@ androidx.viewpager.widget.ViewPager$SavedState
 androidx.viewpager.widget.ViewPager$SimpleOnPageChangeListener
 androidx.viewpager.widget.ViewPager$ViewPositionComparator
 androidx.viewpager.widget.ViewPager
+com.alixumer.schoolapp.brain_school.MainActivity
 com.example.new_eduinfo.BuildConfig
 com.example.new_eduinfo.R$attr
 com.example.new_eduinfo.R$color

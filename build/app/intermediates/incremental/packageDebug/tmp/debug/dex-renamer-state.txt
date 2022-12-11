@@ -1,4 +1,4 @@
-#Thu Dec 08 21:45:41 IST 2022
-base.0=C\:\\Users\\smitk\\Development\\projects\\EduInfo\\new_eduinfo\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Fri Dec 09 22:52:53 IST 2022
+base.0=C\:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
