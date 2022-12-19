@@ -1,3 +1,5 @@
+import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:get/get.dart';
 import '../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -14,8 +16,16 @@ final imageList = [
   ];
 
 class GalleryScreen extends StatelessWidget {
-  const GalleryScreen({Key? key}) : super(key: key);
+  GalleryScreen({Key? key}) : super(key: key);
   static String routeName = 'GalleryScreen';
+
+  AuthController authController = Get.put(AuthController());
+
+  @override
+  void initState() {
+    authController.getUserInfo();
+    //super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +54,19 @@ class GalleryScreen extends StatelessWidget {
                     },
                     scrollPhysics: BouncingScrollPhysics(),
                     backgroundDecoration: BoxDecoration(
-                      color: Theme.of(context).canvasColor,
+                      color: kOtherColor,
                     ),
                   ),
                 ),  
           ),
         ], 
       ),
+      floatingActionButton:  Visibility(visible:authController.myUser.value.wrole == 'teacher',
+        child:
+        FloatingActionButton(
+                onPressed: () {},
+                child: Icon(Icons.add),
+              )),
     );
   }
 }

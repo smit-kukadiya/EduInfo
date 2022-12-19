@@ -1,10 +1,20 @@
+import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:get/get.dart';
 import '../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class MyProfileScreen extends StatelessWidget {
-  const MyProfileScreen({Key? key}) : super(key: key);
+  MyProfileScreen({Key? key}) : super(key: key);
   static String routeName = 'MyProfileScreen';
+
+  AuthController authController = Get.put(AuthController());
+
+  @override
+  void initState() {
+    authController.getUserInfo();
+    //super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +70,10 @@ class MyProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'ABC XYZ',
+                        authController.myUser.value.firstName.toString() + authController.myUser.value.lastName.toString(),
                         style: Theme.of(context).textTheme.subtitle1,
                       ),
-                      Text('B.E. in IT | Roll no: 1',
+                      Text(authController.myUser.value.email.toString(),
                           style: Theme.of(context).textTheme.subtitle2),
                     ],
                   )
@@ -71,14 +81,14 @@ class MyProfileScreen extends StatelessWidget {
               ),
             ),
             sizedBox,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ProfileDetailRow(
-                    title: 'User ID', value: '09090909'),
-                ProfileDetailRow(title: 'Academic Year', value: '2020-21'),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //   children: [
+            //     ProfileDetailRow(
+            //         title: 'User ID', value: '09090909'),
+            //     ProfileDetailRow(title: 'Academic Year', value: '2020-21'),
+            //   ],
+            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -96,10 +106,11 @@ class MyProfileScreen extends StatelessWidget {
               ],
             ),*/
             sizedBox,
-            ProfileDetailColumn(
-              title: 'Email',
-              value: 'xyz@gmail.com',
-            ),
+            ProfileDetailColumn(title: "User ID", value: authController.myUser.value.uid.toString()),
+            // ProfileDetailColumn(
+            //   title: 'Email',
+            //   value: 'xyz@gmail.com',
+            // ),
             ProfileDetailColumn(
               title: 'Father Name',
               value: 'efg',

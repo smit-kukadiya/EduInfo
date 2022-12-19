@@ -1,6 +1,7 @@
 import '../../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter/foundation.dart';
 
 class StudentName extends StatelessWidget {
   const StudentName({Key? key, required this.studentName}) : super(key: key);
@@ -84,8 +85,8 @@ class StudentDataCard extends StatelessWidget {
     return InkWell(
       onTap: onPress,
       child: Container(
-        width: 42.w,
-        height: 12.h,
+        width: 70.w,
+        height: 10.h,
         decoration: BoxDecoration(
           color: kOtherColor,
           borderRadius: BorderRadius.circular(kDefaultPadding),
@@ -99,12 +100,12 @@ class StudentDataCard extends StatelessWidget {
                     color: kTextBlackColor,
                   ),
             ),
-            Text(
-              value,
-              style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                    color: kTextLightColor,
-                  ),
-            ),
+            // Text(
+            //   value,
+            //   style: Theme.of(context).textTheme.subtitle2!.copyWith(
+            //         color: kTextLightColor,
+            //       ),
+            // ),
           ],
         ),
       ),

@@ -1,3 +1,5 @@
+import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:get/get.dart';
 import '../../constants.dart';
 import 'data/assignment_data.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +9,16 @@ import 'widgets/assignment_widgets.dart';
 
 
 class AssignmentScreen extends StatelessWidget {
-  const AssignmentScreen({Key? key}) : super(key: key);
+  AssignmentScreen({Key? key}) : super(key: key);
   static String routeName = 'AssignmentScreen';
+
+  AuthController authController = Get.put(AuthController());
+
+  @override
+  void initState() {
+    authController.getUserInfo();
+    //super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +118,12 @@ class AssignmentScreen extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton:  Visibility(visible:authController.myUser.value.wrole == 'teacher',
+        child:
+        FloatingActionButton(
+                onPressed: () {},
+                child: Icon(Icons.add),
+              )),
     );
   }
 }

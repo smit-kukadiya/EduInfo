@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "84740926458",
+    "project_id": "eduinfodemo",
+    "storage_bucket": "eduinfodemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84740926458:android:7041e987a7fc82b1a55243",
+        "android_client_info": {
+          "package_name": "com.example.new_eduinfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84740926458-m28o2nr7pja0pl6ve6jl6htd5r2ibi1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWLgbdMoQ9K8DpU19Dr9xDgPfhHBziEYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84740926458-m28o2nr7pja0pl6ve6jl6htd5r2ibi1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

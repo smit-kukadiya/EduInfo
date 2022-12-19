@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../components/custom_buttons.dart';
 import '../../constants.dart';
 import '../home_screen/home_screen.dart';
@@ -10,6 +11,8 @@ import 'package:sizer/sizer.dart';
 late bool _passwordVisible;
 
 class LoginScreen extends StatefulWidget {
+  final VoidCallback showSignUpScreen;
+  const LoginScreen({Key? key, required this.showSignUpScreen}) : super(key: key);
   static String routeName = 'LoginScreen';
 
   @override
@@ -20,8 +23,31 @@ class _LoginScreenState extends State<LoginScreen> {
   //validate our form now
   final _formKey = GlobalKey<FormState>();
 
-  List<String> users = ['Student', 'Teacher', 'Parent'];
-  String? defaultUser = 'Student';
+  // List<String> users = ['Student', 'Teacher', 'Parent'];
+  // String? defaultUser = 'Student';
+
+  Future login() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(), 
+        password: _passwordController.text.trim(),
+        );
+    } on FirebaseAuthException catch(e) {
+      if (e.code == 'user-not-found') {
+          showDialog(context: context, builder: (context) {
+            return AlertDialog(
+              content: Text('No user found for that email.'),
+            );
+          },);
+        } else {
+          showDialog(context: context, builder: (context) {
+            return AlertDialog(
+              content: Text('Wrong password provided for that user.'),
+            );
+          },);
+        }
+    }
+  }
 
   //changes current state
   @override
@@ -31,7 +57,16 @@ class _LoginScreenState extends State<LoginScreen> {
     _passwordVisible = true;
   }
 
-  TextEditingController textFieldController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,22 +133,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         //   ),
                         //
                         // ),
-                        sizedBox,
-                        DropdownButton<String>(
-                          isExpanded: true,
-                          iconEnabledColor: Colors.white,
-                          style: TextStyle(color: kPrimaryColor, fontSize: 14),
-                          dropdownColor: kTextWhiteColor,
-                          focusColor: Colors.black,
-                          value: defaultUser,
-                            items: users
-                              .map((item) => DropdownMenuItem<String>(
-                                value: item,
-                                child: Text(item)
-                            ))
-                              .toList(),
-                             onChanged: (item) => setState(() => defaultUser = item),
-                        ),
+                        // sizedBox,
+                        // DropdownButton<String>(
+                        //   isExpanded: true,
+                        //   iconEnabledColor: Colors.white,
+                        //   style: TextStyle(color: kPrimaryColor, fontSize: 14),
+                        //   dropdownColor: kTextWhiteColor,
+                        //   focusColor: Colors.black,
+                        //   value: defaultUser,
+                        //     items: users
+                        //       .map((item) => DropdownMenuItem<String>(
+                        //         value: item,
+                        //         child: Text(item)
+                        //     ))
+                        //       .toList(),
+                        //      onChanged: (item) => setState(() => defaultUser = item),
+                        // ),
                         sizedBox,
                         buildEmailField(),
                         sizedBox,
@@ -122,43 +157,48 @@ class _LoginScreenState extends State<LoginScreen> {
                         DefaultButton(
                           onPress: () {
                             if (_formKey.currentState!.validate()) {
-                              Navigator.pushNamedAndRemoveUntil(context,
-                                  HomeScreen.routeName, (route) => false);
+                              login();
                             }
                           },
                           title: 'SIGN IN',
                           iconData: Icons.arrow_forward_outlined,
                         ),
-                        // sizedBox,
-                        // AnotherButton(
-                        //   onPress: () {
-                        //     Navigator.pushNamedAndRemoveUntil(context,
-                        //         ForgotPasswordScreen.routeName, (route) => false);
-                        //   },
-                        //   //alignment: Alignment.center,
-                        //   //child: Text(
-                        //     title: 'Forgot Password',
-                        //     //iconData: Icons.arrow_forward_outlined,
-                        //     //textAlign: TextAlign.end,
-                        //     // style: Theme.of(context)
-                        //     //     .textTheme
-                        //     //     .subtitle2!
-                        //     //     .copyWith(
-                        //     //         color: kPrimaryColor,
-                        //     //         fontWeight: FontWeight.w500),
-                        //   ),
+                        sizedBox,
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context){
+                                  return ForgotPasswordScreen();
+                                },),);
+                              },
+                              child: Text(
+                                'Forgot Password',
+                                textAlign: TextAlign.end,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2!
+                                    .copyWith(
+                                    color: kPrimaryColor,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
                           sizedBox,
                           Align(
                             alignment: Alignment.bottomRight,
-                            child: Text(
-                              'Sign Up',
-                              textAlign: TextAlign.end,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle2!
-                                  .copyWith(
-                                  color: kPrimaryColor,
-                                  fontWeight: FontWeight.w500),
+                            child: GestureDetector(
+                              onTap: widget.showSignUpScreen,
+                              child: Text(
+                                'Sign Up for Teachers',
+                                textAlign: TextAlign.end,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2!
+                                    .copyWith(
+                                    color: kPrimaryColor,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
 
                         ),
@@ -176,7 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextFormField buildEmailField() {
     return TextFormField(
-      controller: textFieldController,
+      controller: _emailController,
       textAlign: TextAlign.start,
       keyboardType: TextInputType.emailAddress,
       style: kInputTextStyle,
@@ -185,7 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (value) {
-        print(value);
+        //print(value);
         //for validation
         RegExp regExp = new RegExp(emailPattern);
         if (value == null || value.isEmpty) {
@@ -201,6 +241,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextFormField buildPasswordField() {
     return TextFormField(
+      controller: _passwordController,
       obscureText: _passwordVisible,
       textAlign: TextAlign.start,
       keyboardType: TextInputType.visiblePassword,
@@ -223,8 +264,8 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
       validator: (value) {
-        if (value!.length < 5) {
-          return 'Must be more than 5 characters';
+        if (value!.length < 8) {
+          return 'Must be more than 7 characters';
         }
       },
     );

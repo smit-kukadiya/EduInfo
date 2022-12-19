@@ -1,22 +1,52 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../components/custom_buttons.dart';
 import '../../constants.dart';
 import '../login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-// class ForgotPasswordScreen extends StatefulWidget {
-//   static String routeName = 'ForgotPasswordScreen';
-//
-//   @override
-//   _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
-// }
-//
-// class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
-//   //validate our form now
-//   final _formKey = GlobalKey<FormState>();
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
-  static String routeName = 'ForgotPasswordScreen';
+  // static String routeName = 'ForgotPasswordScreen';
+
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+//
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+//   //validate our form now  
+//   final _formKey = GlobalKey<FormState>();
+// class ForgotPasswordScreen extends StatelessWidget {
+  
+  // static String routeName = 'ForgotPasswordScreen';
+  final _emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  Future passwordReset() async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
+      showDialog(context: context, builder: (context) {
+        return AlertDialog(
+          content: Text("Password reset link sent! Check your email"),
+        );
+      },
+      );
+    } on FirebaseAuthException catch (e) {
+      showDialog(context: context, builder: (context) {
+        return AlertDialog(
+          content: Text(e.message.toString()),
+        );
+      },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +110,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                          buildEmailField(),
                          sizedBox,
                          DefaultButton(
-                           onPress: () {
-                              if (/*_formKey.currentState!.validate()*/true) {
-                                Navigator.pushNamedAndRemoveUntil(context,
-                                    LoginScreen.routeName, (route) => false);
-                              }
-                           },
+                           onPress: passwordReset,
                            title: 'Submit',
                            iconData: Icons.arrow_forward_outlined,
                          ),
@@ -132,11 +157,12 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   TextFormField buildEmailField() {
     return TextFormField(
+      controller: _emailController,
       textAlign: TextAlign.start,
       keyboardType: TextInputType.emailAddress,
       style: kInputTextStyle,
       decoration: InputDecoration(
-        labelText: 'Mobile Number',
+        labelText: 'Email',
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (value) {

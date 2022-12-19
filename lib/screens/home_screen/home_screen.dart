@@ -1,3 +1,10 @@
+import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:EduInfo/screens/add_parent/add_parent.dart';
+import 'package:EduInfo/screens/add_student/add_student.dart';
+import 'package:EduInfo/screens/contact_screen/contact%20screen.dart';
+import 'package:EduInfo/screens/teacher_screen/teacher_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../constants.dart';
 import '../assignment_screen/assignment_screen.dart';
 import '../datesheet_screen/datesheet_screen.dart';
@@ -13,39 +20,74 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 import 'widgets/student_data.dart';
+import 'package:get/get.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key,}) : super(key: key);
   static String routeName = 'HomeScreen';
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final user = FirebaseAuth.instance.currentUser!;
+  //late String myEmail;
+
+  AuthController authController = Get.put(AuthController());
+
+  //Document IDs
+  late String? firstName;
+
+  @override
+  void initState() {
+    authController.getUserInfo();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Obx(() => authController.myUser.value.email == null
+      ? Center(
+        child: CircularProgressIndicator(),
+      ) :
+      Column(
         children: [
           //we will divide the screen into two parts
           //fixed height for first half
           Container(
             width: 100.w,
-            height: 30.h,
+            height: authController.myUser.value.wrole == 'teacher' ? 35.h : 25.h,
             padding: EdgeInsets.all(kDefaultPadding),
-            child: Column(
+            child:
+             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                //buildProfileTile(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        StudentName(
-                          studentName: 'XYZ',
+                        Row(
+                          children: [
+                            RichText(
+                              text: TextSpan(children: [
+                                TextSpan(
+                                  text: 'Hi ', style: Theme.of(context).textTheme.subtitle1,
+                                ),
+                                TextSpan(
+                                  text: authController.myUser.value.firstName , style: Theme.of(context).textTheme.subtitle1,
+                                )
+                              ])
+                              )
+                            ],
                         ),
                         kHalfSizedBox,
-                        StudentClass(
-                            studentClass: 'B.E. in IT | Roll no: 1'),
+                        StudentClass(studentClass: authController.myUser.value.email.toString()),
                         kHalfSizedBox,
-                        StudentYear(studentYear: '2020-2021'),
+                        //StudentYear(studentYear: '2020-2021'),
                       ],
                     ),
                     kHalfSizedBox,
@@ -59,26 +101,30 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 sizedBox,
-                /*Row(
+                Obx(() => authController.myUser.value.wrole != 'teacher' ?
+                    Center(
+                      child: null,
+                    ) :
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    StudentDataCard(
-                      onPress: () {
-                        //go to attendance screen
-                      },
-                      title: 'Attendance',
-                      value: '90.02%',
-                    ),
+                    // StudentDataCard(
+                    //   onPress: () {
+                    //     //go to attendance screen
+                    //   },
+                    //   title: 'Attendance',
+                    //   value: '90.02%',
+                    // ),
                     StudentDataCard(
                       onPress: () {
                         //go to fee due screen
-                        Navigator.pushNamed(context, FeeScreen.routeName);
+                        Navigator.pushNamed(context, AssignmentScreen.routeName);
                       },
-                      title: 'Fees Due',
-                      value: '600\$',
+                      title: 'Annoucement',
+                      value: ' ',
                     ),
                   ],
-                )*/
+                ), ),
               ],
             ),
           ),
@@ -96,13 +142,16 @@ class HomeScreen extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 child: Column(
                   children: [
+                    Obx(() => authController.myUser.value.wrole == 'teacher' ?
+                    Center(
+                      child: null,
+                    ) :
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
                           onPress: () {
-                            Navigator.pushNamed(
-                                context, FeeScreen.routeName);
+                            Navigator.pushNamed(context, FeeScreen.routeName);
                           },
                           icon: 'assets/icons/quiz.svg',
                           title: 'Pay Fees',
@@ -117,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                           title: 'Announcement',
                         ),
                       ],
-                    ),
+                    ), ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -129,6 +178,15 @@ class HomeScreen extends StatelessWidget {
                           icon: 'assets/icons/holiday.svg',
                           title: 'Academic Calendar',
                         ),
+                        Obx(() => authController.myUser.value.wrole == 'parent' ?
+                        HomeCard(
+                          onPress: () {
+                            Navigator.pushNamed(
+                                context, ContactScreen.routeName);
+                          },
+                          icon: 'assets/icons/timetable.svg',
+                          title: 'Contact Teacher',
+                        ) :
                         HomeCard(
                           onPress: () {
                             Navigator.pushNamed(
@@ -136,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                           },
                           icon: 'assets/icons/timetable.svg',
                           title: 'Time Table',
-                        ),
+                        ), ),
                       ],
                     ),
                     Row(
@@ -168,22 +226,32 @@ class HomeScreen extends StatelessWidget {
                         ),*/
                       ],
                     ),
-                    /*Row(
+                    Obx(() => authController.myUser.value.wrole != 'teacher' ?
+                    Center(
+                      child: null,
+                    ) :
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
-                          onPress: () {},
+                          onPress: () {
+                            Navigator.pushNamed(
+                                context, AddStudent.routeName);
+                          },
                           icon: 'assets/icons/ask.svg',
-                          title: 'Ask',
+                          title: 'Add Student',
                         ),
                         HomeCard(
-                          onPress: () {},
+                          onPress: () {
+                            Navigator.pushNamed(
+                                context, AddParent.routeName);
+                          },
                           icon: 'assets/icons/gallery.svg',
-                          title: 'Gallery',
+                          title: 'Add Parent',
                         ),
                       ],
-                    ),
-                    Row(
+                    ),),
+                    /*Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
@@ -204,7 +272,7 @@ class HomeScreen extends StatelessWidget {
                         HomeCard(
                           onPress: () {
                             Navigator.pushNamed(
-                              context, EventsScreen.routeName);
+                                context, EventsScreen.routeName);
                           },
                           icon: 'assets/icons/event.svg',
                           title: 'Events',
@@ -212,7 +280,7 @@ class HomeScreen extends StatelessWidget {
                         HomeCard(
                           onPress: () {
                             //go to login screen here
-                            Navigator.pushNamed(context, LoginScreen.routeName);
+                            FirebaseAuth.instance.signOut();
                           },
                           icon: 'assets/icons/logout.svg',
                           title: 'Logout',
@@ -226,7 +294,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ));
   }
 }
 

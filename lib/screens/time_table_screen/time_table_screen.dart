@@ -1,16 +1,26 @@
+import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:get/get.dart';
 import '../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:photo_view/photo_view_gallery.dart';
+//import 'package:photo_view/photo_view_gallery.dart';
 
 final imageList = [
     'assets/images/timetable.jpg',
   ];
 
 class TimeTableScreen extends StatelessWidget {
-  const TimeTableScreen({Key? key}) : super(key: key);
+  TimeTableScreen({Key? key}) : super(key: key);
   static String routeName = 'TimeTableScreen';
+
+  AuthController authController = Get.put(AuthController());
+
+  @override
+  void initState() {
+    authController.getUserInfo();
+    //super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,25 +37,27 @@ class TimeTableScreen extends StatelessWidget {
                  borderRadius: kTopBorderRadius,
                ),
                child:
-                   PhotoViewGallery.builder(
-                    itemCount: imageList.length,
-                    builder: (context, index) {
-                      return PhotoViewGalleryPageOptions(
+                   PhotoView(
                         basePosition: Alignment.center,
-                        imageProvider: AssetImage(imageList[index]),
+                        imageProvider: AssetImage(imageList[0]),
                         minScale: PhotoViewComputedScale.contained * 0.8,
                         maxScale: PhotoViewComputedScale.covered * 2,
-                      );
-                    },
-                    scrollPhysics: BouncingScrollPhysics(),
+                    gaplessPlayback: false,
+                    customSize: MediaQuery.of(context).size,
                     backgroundDecoration: BoxDecoration(
-                      color: Theme.of(context).canvasColor,
+                      color: kOtherColor,
                     ),
                   ),
                 ),  
           ),
         ],
       ),
+      floatingActionButton:  Visibility(visible:authController.myUser.value.wrole == 'teacher',
+        child:
+        FloatingActionButton(
+                onPressed: () {},
+                child: Icon(Icons.add),
+              )),
     );
   }
 }

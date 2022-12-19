@@ -1,7 +1,7 @@
 <variant
     name="release"
     package="com.example.new_eduinfo"
-    minSdkVersion="16"
+    minSdkVersion="21"
     targetSdkVersion="31"
     shrinking="true"
     mergedManifest="C:\Users\smitk\Development\projects\EduInfo\build\app\intermediates\merged_manifest\release\AndroidManifest.xml"
@@ -33,6 +33,6 @@
       classOutputs="C:\Users\smitk\Development\projects\EduInfo\build\app\intermediates\javac\release\classes;C:\Users\smitk\Development\projects\EduInfo\build\app\tmp\kotlin-classes\release;C:\Users\smitk\Development\projects\EduInfo\build\app\kotlinToolingMetadata;C:\Users\smitk\Development\projects\EduInfo\build\app\intermediates\compile_and_runtime_not_namespaced_r_class_jar\release\R.jar"
       applicationId="com.example.new_eduinfo"
       generatedSourceFolders="C:\Users\smitk\Development\projects\EduInfo\build\app\generated\ap_generated_sources\release\out;C:\Users\smitk\Development\projects\EduInfo\build\app\generated\aidl_source_output_dir\release\out;C:\Users\smitk\Development\projects\EduInfo\build\app\generated\source\buildConfig\release;C:\Users\smitk\Development\projects\EduInfo\build\app\generated\renderscript_source_output_dir\release\out"
-      generatedResourceFolders="C:\Users\smitk\Development\projects\EduInfo\build\app\generated\res\rs\release;C:\Users\smitk\Development\projects\EduInfo\build\app\generated\res\resValues\release">
+      generatedResourceFolders="C:\Users\smitk\Development\projects\EduInfo\build\app\generated\res\google-services\release;C:\Users\smitk\Development\projects\EduInfo\build\app\generated\res\rs\release;C:\Users\smitk\Development\projects\EduInfo\build\app\generated\res\resValues\release">
   </mainArtifact>
 </variant>
