@@ -1,6 +1,7 @@
 import 'package:EduInfo/screens/add_student/widget/add_student_widget.dart';
 import 'package:EduInfo/screens/home_screen/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../constants.dart';
 import 'package:flutter/material.dart';
@@ -11,22 +12,35 @@ import 'package:sizer/sizer.dart';
 class AddStudent extends StatelessWidget {
   AddStudent({Key? key}) : super(key: key);
   static String routeName = 'AddStudent';
-  Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
-      .collection('users')
-      .where('role', isEqualTo: 'student')
-      .snapshots();
+
+  
+  final teacher = FirebaseAuth.instance.currentUser!.uid.toString();
+
+  Query getData(){
+    return FirebaseFirestore.instance.collection('users')
+      .where("tuid", isEqualTo: teacher).where('role', isEqualTo: 'student');
+  }
+
+  Stream<QuerySnapshot> get flashCardWords {
+    return getData().snapshots();
+  }
+
+  // final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
+  //     .collection('users')
+  //     .where('role', isEqualTo: teacher)
+  //     .snapshots();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Student', style: TextStyle(color: kTextWhiteColor),),
+        title: const Text('Add Student', style: TextStyle(color: kTextWhiteColor),),
       ),
       body: StreamBuilder(
-        stream: _usersStream,
+        stream: flashCardWords,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Text("something is wrong");
+            return const Text("something is wrong");
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(

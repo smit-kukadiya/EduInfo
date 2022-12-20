@@ -4,8 +4,11 @@ class UsersModel {
   String? email;
   String? wrole;
   String? uid;
+  String? image;
+  int? mobile;
+  String? birthDate;
 
-  UsersModel({this.firstName, this.lastName, this.email, this.uid, this.wrole});
+  UsersModel({this.firstName, this.lastName, this.email, this.uid, this.wrole, this.image, this.mobile, this.birthDate});
 
   UsersModel.fromJson(Map<String, dynamic> json) {
     firstName = json['first name'];
@@ -13,5 +16,8 @@ class UsersModel {
     email = json['email'];
     wrole = json['role'];
     uid = json['uid'];
+    image = json['image'];
+    mobile = json['mobile'];
+    birthDate = json['birth date'];
   }
 }

@@ -5,6 +5,7 @@ import 'package:EduInfo/screens/add_parent/widget/add_parent_widget.dart';
 import 'package:EduInfo/screens/add_student/add_student.dart';
 import 'package:EduInfo/screens/add_student/widget/add_student_widget.dart';
 import 'package:EduInfo/screens/contact_screen/contact%20screen.dart';
+import 'package:EduInfo/screens/my_profile/my_profile_setting/my_profile_setting.dart';
 import 'package:EduInfo/screens/splash_screen/splash_screen.dart';
 import 'package:EduInfo/screens/college_cal_screen/college_cal_screen.dart';
 import 'package:EduInfo/screens/gallery_screen/gallery_screen.dart';
@@ -45,4 +46,5 @@ Map<String, WidgetBuilder> routes = {
   AddParentUsers.routeName: (context) => AddParentUsers(),
   TeacherScreen.routeName: (context) => TeacherScreen(),
   ContactScreen.routeName: (context) => ContactScreen(),
+  MyProfileSetting.routeName: (context) => MyProfileSetting(),
 };

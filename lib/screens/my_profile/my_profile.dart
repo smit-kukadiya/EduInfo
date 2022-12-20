@@ -1,5 +1,10 @@
+
+import 'dart:io';
+
 import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:EduInfo/screens/my_profile/my_profile_setting/my_profile_setting.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -9,6 +14,16 @@ class MyProfileScreen extends StatelessWidget {
   static String routeName = 'MyProfileScreen';
 
   AuthController authController = Get.put(AuthController());
+
+  final ImagePicker _picker = ImagePicker();
+  File? selectedImage;
+
+  getImage(ImageSource source) async {
+    final XFile? image = await _picker.pickImage(source: source);
+    if (image != null) {
+      selectedImage = File(image.path);
+    }
+  }
 
   @override
   void initState() {
@@ -21,22 +36,23 @@ class MyProfileScreen extends StatelessWidget {
     return Scaffold(
       //app bar theme for tablet
       appBar: AppBar(
-        title: Text('My Profile'),
+        title: Text('My Profile', style: TextStyle(color: kTextWhiteColor),),
         actions: [
           InkWell(
             onTap: () {
               //send report to school management, in case if you want some changes to your profile
+              Navigator.pushNamed(context, MyProfileSetting.routeName);
             },
             child: Container(
               padding: EdgeInsets.only(right: kDefaultPadding / 2),
               child: Row(
                 children: [
-                  Icon(Icons.report_gmailerrorred_outlined),
+                  Icon(Icons.edit),
                   kHalfWidthSizedBox,
-                  Text(
-                    'Report',
-                    style: Theme.of(context).textTheme.subtitle2,
-                  ),
+                  // Text(
+                  //   'Report',
+                  //   style: Theme.of(context).textTheme.subtitle2,
+                  // ),
                 ],
               ),
             ),
@@ -57,12 +73,41 @@ class MyProfileScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleAvatar(
+                  GestureDetector(
+                    onTap: (){
+                      
+                    },
+                  child: selectedImage == null ? authController.myUser.value.image!=null? CircleAvatar(
                     radius:
                         SizerUtil.deviceType == DeviceType.tablet ? 12.w : 13.w,
                     backgroundColor: kSecondaryColor,
                     backgroundImage:
-                        AssetImage('assets/images/student_profile.jpeg'),
+                        NetworkImage(authController.myUser.value.image!),
+                  ): Container(
+                        width: 120,
+                        height: 120,
+                        margin: EdgeInsets.only(bottom: 20),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xffD6D6D6)),
+                        child: Center(
+                          child: Icon(
+                            Icons.account_circle_outlined,
+                            size: 40,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ): Container(
+                        width: 120,
+                        height: 120,
+                        margin: EdgeInsets.only(bottom: 20),
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: FileImage(selectedImage!),
+                                fit: BoxFit.fill),
+                            shape: BoxShape.circle,
+                            color: Color(0xffD6D6D6)),
+                      ),
                   ),
                   kWidthSizedBox,
                   Column(
@@ -70,7 +115,7 @@ class MyProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        authController.myUser.value.firstName.toString() + authController.myUser.value.lastName.toString(),
+                        authController.myUser.value.firstName.toString() + " " + authController.myUser.value.lastName.toString(),
                         style: Theme.of(context).textTheme.subtitle1,
                       ),
                       Text(authController.myUser.value.email.toString(),
@@ -89,14 +134,14 @@ class MyProfileScreen extends StatelessWidget {
             //     ProfileDetailRow(title: 'Academic Year', value: '2020-21'),
             //   ],
             // ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ProfileDetailRow(title: 'Semester', value: 'V'),
-                ProfileDetailRow(title: 'Date of Birth', value: '01-01-2000'),
-                //ProfileDetailRow(title: 'Admission Number', value: '000126'),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //   children: [
+            //     ProfileDetailRow(title: 'Semester', value: 'V'),
+            //     ProfileDetailRow(title: 'Date of Birth', value: '01-01-2000'),
+            //     //ProfileDetailRow(title: 'Admission Number', value: '000126'),
+            //   ],
+            // ),
             /*Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -111,17 +156,18 @@ class MyProfileScreen extends StatelessWidget {
             //   title: 'Email',
             //   value: 'xyz@gmail.com',
             // ),
-            ProfileDetailColumn(
-              title: 'Father Name',
-              value: 'efg',
-            ),
-            ProfileDetailColumn(
-              title: 'Mother Name',
-              value: 'ijk',
-            ),
+            ProfileDetailColumn(title: 'Date of Birth', value: authController.myUser.value.birthDate.toString()),
+            // ProfileDetailColumn(
+            //   title: 'Father Name',
+            //   value: 'efg',
+            // ),
+            // ProfileDetailColumn(
+            //   title: 'Mother Name',
+            //   value: 'ijk',
+            // ),
             ProfileDetailColumn(
               title: 'Phone Number',
-              value: '+919999999999',
+              value: authController.myUser.value.mobile.toString(),
             ),
           ],
         ),

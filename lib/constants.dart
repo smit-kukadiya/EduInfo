@@ -49,7 +49,7 @@ final kInputTextStyle = GoogleFonts.poppins(
 );
 
 //validation for mobile
-const String mobilePattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+const String mobilePattern = r'(^(?:[+0]9)?[0-9]{10}$)';
 
 //validation for email
 const String emailPattern =

@@ -1,3 +1,4 @@
+import 'package:EduInfo/components/custom_textfeild.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _confirmPasswordController = TextEditingController();
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
+  final _mobileController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -34,6 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void dispose() {
     // TODO: implement dispose
     _emailController.dispose();
+    _mobileController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     _firstNameController.dispose();
@@ -59,19 +62,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
       addUserDetails(_firstNameController.text.trim(),
         _lastNameController.text.trim(),
         _emailController.text.trim(),
-        //int.parse(Your_controller_name.text.trim());
+        int.parse(_mobileController.text.trim()),
       );
     }
   }
 
   //String 
 
-  Future addUserDetails(String firstName, String lastName, String email) async {
+  Future addUserDetails(String firstName, String lastName, String email, int mobile) async {
     String uid = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance.collection("users").doc(uid).set({
       'first name': firstName,
       'last name': lastName,
       'email': email,
+      'mobile': mobile,
       'role': 'teacher',
       'uid': FirebaseAuth.instance.currentUser?.uid.toString(),
     });
@@ -167,18 +171,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         //      onChanged: (item) => setState(() => defaultUser = item),
                         // ),
                         sizedBox,
-                        buildEmailField(_firstNameController, 'First Name'),
-                        sizedBox,
-                        buildEmailField(_lastNameController, 'Last Name'),
+                        rowFirstLastName(_firstNameController, 'First Name',  _lastNameController, 'Last Name'),
                         sizedBox,
                         buildEmailField(_emailController, 'Email'),
+                        sizedBox,
+                        buildMobileField(_mobileController, 'Mobile Number'),
                         sizedBox,
                         buildPasswordField("Password", _passwordController, true),
                         sizedBox,
                         buildPasswordField("Confirm Password", _confirmPasswordController, true),
                         sizedBox,
                         DefaultButton(
-                          onPress: signUp,
+                          onPress: () {
+                            if (_formKey.currentState!.validate()) {
+                              signUp();
+                            }
+                          },
                           title: 'SIGN UP',
                           iconData: Icons.arrow_forward_outlined,
                         ),
@@ -231,30 +239,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   }
 
-    TextFormField buildEmailField(name, textName) {
-    return TextFormField(
-      controller: name,
-      textAlign: TextAlign.start,
-      keyboardType: TextInputType.emailAddress,
-      style: kInputTextStyle,
-      decoration: InputDecoration(
-        labelText: textName,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-      ),
-      validator: (value) {
-        print(value);
-        //for validation
-        RegExp regExp = new RegExp(emailPattern);
-        if (value == null || value.isEmpty) {
-          return 'Please enter some text';
-          //if it does not matches the pattern, like
-          //it not contains @
-        } else if (!regExp.hasMatch(value)) {
-          return 'Please enter a valid email address';
-        }
-      },
-    );
-  }
+  //   TextFormField buildEmailField(name, textName) {
+  //   return TextFormField(
+  //     controller: name,
+  //     textAlign: TextAlign.start,
+  //     keyboardType: TextInputType.emailAddress,
+  //     style: kInputTextStyle,
+  //     decoration: InputDecoration(
+  //       labelText: textName,
+  //       floatingLabelBehavior: FloatingLabelBehavior.always,
+  //     ),
+  //     validator: (value) {
+  //       print(value);
+  //       //for validation
+  //       RegExp regExp = new RegExp(emailPattern);
+  //       if (value == null || value.isEmpty) {
+  //         return 'Please enter some text';
+  //         //if it does not matches the pattern, like
+  //         //it not contains @
+  //       } else if (!regExp.hasMatch(value)) {
+  //         return 'Please enter a valid email address';
+  //       }
+  //     },
+  //   );
+  // }
 
   TextFormField buildPasswordField(name, passController, obscure) {
     return TextFormField(

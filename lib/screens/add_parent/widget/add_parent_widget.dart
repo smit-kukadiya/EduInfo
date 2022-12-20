@@ -30,12 +30,16 @@ class AddParentUsers extends StatelessWidget {
       await FirebaseAuth.instanceFor(app: app)
         .createUserWithEmailAndPassword(
             email: _emailController.text.trim(), password: _passwordController.text.trim());
-      parentUID = await FirebaseAuth.instanceFor(app: app).currentUser!.uid;
-      await FirebaseFirestore.instanceFor(app: app).collection('users').doc(parentUID).set({
+      parentUID = FirebaseAuth.instanceFor(app: app).currentUser!.uid;
+      await FirebaseFirestore.instance.collection('users').doc(parentUID).set({
         'email': _emailController.text.trim(),
         'role': 'parent',
         'tuid': teacher,
         'uid': parentUID,
+      });
+
+      await FirebaseFirestore.instance.collection('users').doc(teacher).update({
+                  'parents': FieldValue.arrayUnion([parentUID]),
       });
       
       app.delete();

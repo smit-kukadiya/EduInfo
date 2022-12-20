@@ -1,6 +1,7 @@
 import 'package:EduInfo/screens/add_parent/widget/add_parent_widget.dart';
 import 'package:EduInfo/screens/home_screen/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../constants.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,17 @@ import 'package:sizer/sizer.dart';
 class AddParent extends StatelessWidget {
   AddParent({Key? key}) : super(key: key);
   static String routeName = 'AddParent';
-  Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
-      .collection('users')
-      .where('role', isEqualTo: 'parent')
-      .snapshots();
+
+  final teacher = FirebaseAuth.instance.currentUser!.uid.toString();
+
+  Query getData(){
+    return FirebaseFirestore.instance.collection('users')
+      .where("tuid", isEqualTo: teacher).where('role', isEqualTo: 'parent');
+  }
+
+  Stream<QuerySnapshot> get flashCardWords {
+    return getData().snapshots();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +31,7 @@ class AddParent extends StatelessWidget {
         title: Text('Add Parent', style: TextStyle(color: kTextWhiteColor),),
       ),
       body: StreamBuilder(
-        stream: _usersStream,
+        stream: flashCardWords,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Text("something is wrong");

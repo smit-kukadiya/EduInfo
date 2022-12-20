@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             RichText(
                               text: TextSpan(children: [
                                 TextSpan(
-                                  text: 'Hi ', style: Theme.of(context).textTheme.subtitle1,
+                                  text: 'Hello ', style: Theme.of(context).textTheme.subtitle1,
                                 ),
                                 TextSpan(
                                   text: authController.myUser.value.firstName , style: Theme.of(context).textTheme.subtitle1,
@@ -91,13 +91,32 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     kHalfSizedBox,
-                    StudentPicture(
-                        picAddress: 'assets/images/student_profile.jpeg',
-                        onPress: () {
-                          // go to profile detail screen here
-                          Navigator.pushNamed(
-                              context, MyProfileScreen.routeName);
-                        }),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, MyProfileScreen.routeName);
+                      },
+                    child: authController.myUser.value.image!=null? CircleAvatar(
+                    radius:
+                        SizerUtil.deviceType == DeviceType.tablet ? 12.w : 13.w,
+                    backgroundColor: kSecondaryColor,
+                    backgroundImage:
+                        NetworkImage(authController.myUser.value.image!),
+                  ): Container(
+                        width: 120,
+                        height: 120,
+                        margin: EdgeInsets.only(bottom: 20),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xffD6D6D6)),
+                        child: Center(
+                          child: Icon(
+                            Icons.account_circle_outlined,
+                            size: 40,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 sizedBox,

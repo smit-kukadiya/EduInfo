@@ -14,30 +14,37 @@ class AddStudentUsers extends StatelessWidget {
   AddStudentUsers({Key? key}) : super(key: key);
   static String routeName = 'AddStudentUsers';
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   late FirebaseAuth mAuth1;
   
   final _formKey = GlobalKey<FormState>();
   
   final teacher = FirebaseAuth.instance.currentUser!.uid.toString();
-  String? studentUID;
+  late String? studentUID;
 
-  Future addingStudent() async {
+  Future addingStudent() async{
       FirebaseApp app = await Firebase.initializeApp(
         name: 'secondary', options: Firebase.app().options);
       await FirebaseAuth.instanceFor(app: app)
         .createUserWithEmailAndPassword(
             email: _emailController.text.trim(), password: _passwordController.text.trim());
-      studentUID = await FirebaseAuth.instanceFor(app: app).currentUser!.uid;
-      await FirebaseFirestore.instanceFor(app: app).collection('users').doc(studentUID).set({
+
+
+      studentUID = FirebaseAuth.instanceFor(app: app).currentUser!.uid.toString();
+
+      await FirebaseFirestore.instance.collection('users').doc(studentUID).set({
         'email': _emailController.text.trim(),
         'role': 'student',
         'tuid': teacher,
         'uid': studentUID,
       });
-      
+
+      await FirebaseFirestore.instance.collection('users').doc(teacher).update({
+                  'students': FieldValue.arrayUnion([studentUID]),
+      });
+    
       app.delete();
   }
 
