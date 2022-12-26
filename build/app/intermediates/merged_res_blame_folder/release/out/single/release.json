@@ -5,7 +5,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_notification_bg_low.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable\\notification_bg_low.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable\\notification_bg_low.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_common_google_signin_btn_text_dark_normal.xml.flat",
@@ -25,11 +25,11 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_notification_tile_bg.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable\\notification_tile_bg.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable\\notification_tile_bg.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\layout_notification_template_part_time.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\layout\\notification_template_part_time.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\layout\\notification_template_part_time.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
@@ -89,7 +89,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\layout-v21_notification_action_tombstone.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\layout-v21\\notification_action_tombstone.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_common_google_signin_btn_text_disabled.xml.flat",
@@ -101,7 +101,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xhdpi-v4_common_full_open_on_phone.png.flat",
@@ -109,7 +109,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-v21_notification_action_background.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-v21\\notification_action_background.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-v21\\notification_action_background.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_common_google_signin_btn_text_dark_focused.xml.flat",
@@ -121,7 +121,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
@@ -137,11 +137,11 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_notification_icon_background.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable\\notification_icon_background.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable\\notification_icon_background.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xxxhdpi_splash.png.flat",
@@ -169,7 +169,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_common_google_signin_btn_icon_light_normal.xml.flat",
@@ -181,7 +181,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\mipmap-hdpi_ic_launcher.png.flat",
@@ -189,7 +189,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-hdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_common_google_signin_btn_icon_dark_normal.xml.flat",
@@ -197,7 +197,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xhdpi-v4_googleg_standard_color_18.png.flat",
@@ -209,7 +209,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_notification_bg.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable\\notification_bg.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable\\notification_bg.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable_common_google_signin_btn_icon_light_focused.xml.flat",
@@ -220,8 +220,12 @@
         "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\19fea4fb28dedd992824e13cc158e7a1\\transformed\\jetified-play-services-base-18.0.1\\res\\drawable\\common_google_signin_btn_text_dark.xml"
     },
     {
+        "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\xml_flutter_image_picker_file_paths.xml.flat",
+        "source": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\image_picker_android\\intermediates\\packaged_res\\release\\xml\\flutter_image_picker_file_paths.xml"
+    },
+    {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\layout-v21_notification_action.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\layout-v21\\notification_action.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\layout-v21\\notification_action.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
@@ -229,11 +233,11 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\mipmap-xxhdpi_ic_launcher.png.flat",
@@ -241,7 +245,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-v21_launch_background.xml.flat",
@@ -261,11 +265,11 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\layout-v21_notification_template_icon_group.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\layout-v21\\notification_template_icon_group.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\layout_notification_template_part_chronometer.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\layout\\notification_template_part_chronometer.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-hdpi_splash.png.flat",
@@ -281,15 +285,15 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\layout-v21_notification_template_custom_big.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\layout-v21\\notification_template_custom_big.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-v21_background.png.flat",
@@ -305,11 +309,11 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\layout_custom_dialog.xml.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\layout\\custom_dialog.xml"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\layout\\custom_dialog.xml"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
@@ -317,7 +321,7 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
@@ -341,6 +345,6 @@
     },
     {
         "merged": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\merged_res\\release\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\aa701b47cec244085d46a1a42fcc7fb9\\transformed\\core-1.6.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
+        "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\0ce731f8c62e88af9af421907435d7da\\transformed\\core-1.8.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
     }
 ]

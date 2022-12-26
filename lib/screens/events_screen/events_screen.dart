@@ -1,4 +1,5 @@
 import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:EduInfo/screens/events_screen/add_events_screen.dart';
 import 'package:get/get.dart';
 import '../../constants.dart';
 import 'data/events_data.dart';
@@ -121,7 +122,10 @@ class EventsScreen extends StatelessWidget {
       floatingActionButton:  Visibility(visible:authController.myUser.value.wrole == 'teacher',
         child:
         FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                                context, AddEventsScreen.routeName);
+                },
                 child: Icon(Icons.add),
               )),
     );

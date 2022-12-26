@@ -17,6 +17,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="C:\Users\smitk\Development\projects\EduInfo\android@@:firebase_storage::release"
+      jars="C:\Users\smitk\Development\projects\EduInfo\build\firebase_storage\.transforms\316101450f1c3777b99e90ecc40bf96b\transformed\out\jars\classes.jar"
+      resolved="io.flutter.plugins.firebase.storage:firebase_storage:unspecified"
+      folder="C:\Users\smitk\Development\projects\EduInfo\build\firebase_storage\.transforms\316101450f1c3777b99e90ecc40bf96b\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="C:\Users\smitk\Development\projects\EduInfo\android@@:cloud_firestore::release"
       jars="C:\Users\smitk\Development\projects\EduInfo\build\cloud_firestore\.transforms\8376d8fd87e62a84d4992d04cb1a6400\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.firebase.cloudfirestore:cloud_firestore:unspecified"
@@ -43,10 +56,36 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="C:\Users\smitk\Development\projects\EduInfo\android@@:flutter_plugin_android_lifecycle::release"
+      jars="C:\Users\smitk\Development\projects\EduInfo\build\flutter_plugin_android_lifecycle\.transforms\ff06815ae189ed7ced04ef4e5a5ffa21\transformed\out\jars\classes.jar"
+      resolved="io.flutter.plugins.flutter_plugin_android_lifecycle:flutter_plugin_android_lifecycle:unspecified"
+      folder="C:\Users\smitk\Development\projects\EduInfo\build\flutter_plugin_android_lifecycle\.transforms\ff06815ae189ed7ced04ef4e5a5ffa21\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="C:\Users\smitk\Development\projects\EduInfo\android@@:path_provider_android::release"
       jars="C:\Users\smitk\Development\projects\EduInfo\build\path_provider_android\.transforms\71ad11e2a888a6c939dd781313522443\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"
       folder="C:\Users\smitk\Development\projects\EduInfo\build\path_provider_android\.transforms\71ad11e2a888a6c939dd781313522443\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="C:\Users\smitk\Development\projects\EduInfo\android@@:image_picker_android::release"
+      jars="C:\Users\smitk\Development\projects\EduInfo\build\image_picker_android\.transforms\dbbc0a66e4a6da772a271bc48b2adc56\transformed\out\jars\classes.jar"
+      resolved="io.flutter.plugins.imagepicker:image_picker_android:unspecified"
+      folder="C:\Users\smitk\Development\projects\EduInfo\build\image_picker_android\.transforms\dbbc0a66e4a6da772a271bc48b2adc56\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -179,10 +218,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.core:core:1.6.0@aar"
-      jars="C:\Users\smitk\.gradle\caches\transforms-3\aa701b47cec244085d46a1a42fcc7fb9\transformed\core-1.6.0\jars\classes.jar"
-      resolved="androidx.core:core:1.6.0"
-      folder="C:\Users\smitk\.gradle\caches\transforms-3\aa701b47cec244085d46a1a42fcc7fb9\transformed\core-1.6.0"
+      name="androidx.core:core:1.8.0@aar"
+      jars="C:\Users\smitk\.gradle\caches\transforms-3\0ce731f8c62e88af9af421907435d7da\transformed\core-1.8.0\jars\classes.jar"
+      resolved="androidx.core:core:1.8.0"
+      folder="C:\Users\smitk\.gradle\caches\transforms-3\0ce731f8c62e88af9af421907435d7da\transformed\core-1.8.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -213,10 +252,10 @@
       jars="C:\Users\smitk\.gradle\caches\modules-2\files-2.1\androidx.lifecycle\lifecycle-common-java8\2.2.0\cd3478503da69b1a7e0319bd2d1389943db9b364\lifecycle-common-java8-2.2.0.jar"
       resolved="androidx.lifecycle:lifecycle-common-java8:2.2.0"/>
   <library
-      name="androidx.lifecycle:lifecycle-runtime:2.2.0@aar"
-      jars="C:\Users\smitk\.gradle\caches\transforms-3\d0f809c79e029128874b5601b0b72920\transformed\lifecycle-runtime-2.2.0\jars\classes.jar"
-      resolved="androidx.lifecycle:lifecycle-runtime:2.2.0"
-      folder="C:\Users\smitk\.gradle\caches\transforms-3\d0f809c79e029128874b5601b0b72920\transformed\lifecycle-runtime-2.2.0"
+      name="androidx.lifecycle:lifecycle-runtime:2.3.1@aar"
+      jars="C:\Users\smitk\.gradle\caches\transforms-3\827059b5dbdd36f4518b82e011631b76\transformed\lifecycle-runtime-2.3.1\jars\classes.jar"
+      resolved="androidx.lifecycle:lifecycle-runtime:2.3.1"
+      folder="C:\Users\smitk\.gradle\caches\transforms-3\827059b5dbdd36f4518b82e011631b76\transformed\lifecycle-runtime-2.3.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -265,14 +304,14 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.lifecycle:lifecycle-common:2.2.0@jar"
-      jars="C:\Users\smitk\.gradle\caches\modules-2\files-2.1\androidx.lifecycle\lifecycle-common\2.2.0\4ef09a745007778eef83b92f8f23987a8ea59496\lifecycle-common-2.2.0.jar"
-      resolved="androidx.lifecycle:lifecycle-common:2.2.0"/>
+      name="androidx.lifecycle:lifecycle-common:2.3.1@jar"
+      jars="C:\Users\smitk\.gradle\caches\modules-2\files-2.1\androidx.lifecycle\lifecycle-common\2.3.1\fc466261d52f4433863642fb40d12441ae274a98\lifecycle-common-2.3.1.jar"
+      resolved="androidx.lifecycle:lifecycle-common:2.3.1"/>
   <library
-      name="androidx.arch.core:core-runtime:2.0.0@aar"
-      jars="C:\Users\smitk\.gradle\caches\transforms-3\39e1327ceafb30ef117040fe9315a97f\transformed\core-runtime-2.0.0\jars\classes.jar"
-      resolved="androidx.arch.core:core-runtime:2.0.0"
-      folder="C:\Users\smitk\.gradle\caches\transforms-3\39e1327ceafb30ef117040fe9315a97f\transformed\core-runtime-2.0.0"
+      name="androidx.arch.core:core-runtime:2.1.0@aar"
+      jars="C:\Users\smitk\.gradle\caches\transforms-3\9633f98cacc600c55cd8e13ad9ef85d0\transformed\core-runtime-2.1.0\jars\classes.jar"
+      resolved="androidx.arch.core:core-runtime:2.1.0"
+      folder="C:\Users\smitk\.gradle\caches\transforms-3\9633f98cacc600c55cd8e13ad9ef85d0\transformed\core-runtime-2.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -358,6 +397,19 @@
       jars="C:\Users\smitk\.gradle\caches\transforms-3\e39fe4bf08d15a7a36bde2a48516de12\transformed\jetified-firebase-firestore-24.4.0\jars\classes.jar"
       resolved="com.google.firebase:firebase-firestore:24.4.0"
       folder="C:\Users\smitk\.gradle\caches\transforms-3\e39fe4bf08d15a7a36bde2a48516de12\transformed\jetified-firebase-firestore-24.4.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.firebase:firebase-storage:20.1.0@aar"
+      jars="C:\Users\smitk\.gradle\caches\transforms-3\0da25f878ca7fc72a1a3e4059e81557e\transformed\jetified-firebase-storage-20.1.0\jars\classes.jar"
+      resolved="com.google.firebase:firebase-storage:20.1.0"
+      folder="C:\Users\smitk\.gradle\caches\transforms-3\0da25f878ca7fc72a1a3e4059e81557e\transformed\jetified-firebase-storage-20.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -497,6 +549,23 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="androidx.exifinterface:exifinterface:1.3.3@aar"
+      jars="C:\Users\smitk\.gradle\caches\transforms-3\fae8300db20a09e485ca3ced7347472e\transformed\exifinterface-1.3.3\jars\classes.jar"
+      resolved="androidx.exifinterface:exifinterface:1.3.3"
+      folder="C:\Users\smitk\.gradle\caches\transforms-3\fae8300db20a09e485ca3ced7347472e\transformed\exifinterface-1.3.3"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.concurrent:concurrent-futures:1.0.0@jar"
+      jars="C:\Users\smitk\.gradle\caches\modules-2\files-2.1\androidx.concurrent\concurrent-futures\1.0.0\c1e77e3ee6f4643b77496a1ddf7a2eef1aefdaa1\concurrent-futures-1.0.0.jar"
+      resolved="androidx.concurrent:concurrent-futures:1.0.0"/>
+  <library
       name="androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar"
       jars="C:\Users\smitk\.gradle\caches\transforms-3\92bbcff336b1c071492380cf1ca47662\transformed\localbroadcastmanager-1.0.0\jars\classes.jar"
       resolved="androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
@@ -522,10 +591,6 @@
       symbolFile="R.txt"
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
-  <library
-      name="androidx.concurrent:concurrent-futures:1.0.0@jar"
-      jars="C:\Users\smitk\.gradle\caches\modules-2\files-2.1\androidx.concurrent\concurrent-futures\1.0.0\c1e77e3ee6f4643b77496a1ddf7a2eef1aefdaa1\concurrent-futures-1.0.0.jar"
-      resolved="androidx.concurrent:concurrent-futures:1.0.0"/>
   <library
       name="androidx.interpolator:interpolator:1.0.0@aar"
       jars="C:\Users\smitk\.gradle\caches\transforms-3\0874b2ce249aebd6be8581da2886a270\transformed\interpolator-1.0.0\jars\classes.jar"

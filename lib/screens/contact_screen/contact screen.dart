@@ -1,7 +1,10 @@
+import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:EduInfo/screens/add_parent/widget/add_parent_widget.dart';
+import 'package:EduInfo/screens/assignment_screen/widgets/assignment_widgets.dart';
 import 'package:EduInfo/screens/home_screen/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import '../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -11,10 +14,18 @@ import 'package:sizer/sizer.dart';
 class ContactScreen extends StatelessWidget {
   ContactScreen({Key? key}) : super(key: key);
   static String routeName = 'ContactScreen';
-  Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
-      .collection('users')
-      .where('role', isEqualTo: 'teacher')
-      .snapshots();
+
+  AuthController authController = Get.put(AuthController());
+
+  Query getData(){
+    return FirebaseFirestore.instance.collection('users')
+      .where("uid", isEqualTo: authController.myUser.value.tuid.toString())
+      .where('role', isEqualTo: 'teacher');
+  }
+
+  Stream<QuerySnapshot> get flashCardWords {
+    return getData().snapshots();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +34,17 @@ class ContactScreen extends StatelessWidget {
         title: Text('Contact Details', style: TextStyle(color: kTextWhiteColor),),
       ),
       body: StreamBuilder(
-        stream: _usersStream,
+        stream: flashCardWords,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Text("something is wrong");
           }
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          else if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
-
+    
           return Container(
             decoration: BoxDecoration(
                 color: kOtherColor,
@@ -62,25 +73,25 @@ class ContactScreen extends StatelessWidget {
                               ],
                             ),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // Container(
-                                //   width: 40.w,
-                                //   height: 4.h,
-                                //   decoration: BoxDecoration(
-                                //     color: kSecondaryColor.withOpacity(0.4),
-                                //     borderRadius:
-                                //         BorderRadius.circular(kDefaultPadding),
-                                //   ),
-                                //   // child: Center(
-                                //   //   child: 
-                                //   //   Text(
-                                //   //     snapshot.data!.docChanges[index].doc['email'],
-                                //   //     style: Theme.of(context).textTheme.caption,
-                                //   //   ),
-                                //   // ),
-                                // ),
-                                
+                                Container(
+                                  width: 40.w,
+                                  height: 4.h,
+                                  decoration: BoxDecoration(
+                                    color: kSecondaryColor.withOpacity(0.4),
+                                    borderRadius:
+                                        BorderRadius.circular(kDefaultPadding),
+                                  ),
+                                  child: Center(
+                                    child: 
+                                    Text(
+                                      "Prof. "+snapshot.data!.docChanges[index].doc['first name']+ " "+snapshot.data!.docChanges[index].doc['last name'],
+                                      style: Theme.of(context).textTheme.caption,
+                                    ),
+                                  ),
+                                ),
+                                kHalfSizedBox,
                                 Text(
                                   snapshot.data!.docChanges[index].doc['email'],
                                   style: Theme.of(context).textTheme.subtitle2!.copyWith(
@@ -88,16 +99,16 @@ class ContactScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w900,
                                   ),
                                 ),
-                                // kHalfSizedBox,
-                                // AssignmentDetailRow(
-                                //   title: ' ',
-                                //   statusValue: assignment[index].assignDate,
-                                // ),
-                                // kHalfSizedBox,
-                                // AssignmentDetailRow(
-                                //   title: 'Last Date',
-                                //   statusValue: assignment[index].lastDate,
-                                // ),
+                                kHalfSizedBox,
+                                AssignmentDetailRow(
+                                  title: 'Email',
+                                  statusValue: snapshot.data!.docChanges[index].doc['email'].toString(),
+                                ),
+                                kHalfSizedBox,
+                                AssignmentDetailRow(
+                                  title: 'Phone number',
+                                  statusValue: snapshot.data!.docChanges[index].doc['mobile'].toString(),
+                                ),
                                 // kHalfSizedBox,
                                 // AssignmentDetailRow(
                                 //   title: 'Status',

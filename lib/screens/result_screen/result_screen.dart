@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -15,6 +18,17 @@ class ResultScreen extends StatelessWidget {
   static String routeName = 'ResultScreen';
 
   AuthController authController = Get.put(AuthController());
+
+  final ImagePicker _picker = ImagePicker();
+  File? selectedImage;
+
+  getImage(ImageSource source) async {
+    final XFile? image = await _picker.pickImage(source: source);
+    if (image != null) {
+      selectedImage = File(image.path);
+      //setState(() {});
+    }
+  }
 
   @override
   void initState() {
@@ -59,7 +73,9 @@ class ResultScreen extends StatelessWidget {
       floatingActionButton:  Visibility(visible:authController.myUser.value.wrole == 'teacher',
         child:
         FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  getImage(ImageSource.gallery);
+                },
                 child: Icon(Icons.add),
               )), 
     );

@@ -203,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Navigator.pushNamed(
                                 context, ContactScreen.routeName);
                           },
-                          icon: 'assets/icons/timetable.svg',
+                          icon: 'assets/icons/ask.svg',
                           title: 'Contact Teacher',
                         ) :
                         HomeCard(
@@ -257,7 +257,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Navigator.pushNamed(
                                 context, AddStudent.routeName);
                           },
-                          icon: 'assets/icons/ask.svg',
+                          icon: 'assets/icons/add_student2.svg',
                           title: 'Add Student',
                         ),
                         HomeCard(
@@ -265,7 +265,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Navigator.pushNamed(
                                 context, AddParent.routeName);
                           },
-                          icon: 'assets/icons/gallery.svg',
+                          icon: 'assets/icons/add_parent.svg',
                           title: 'Add Parent',
                         ),
                       ],

@@ -8,7 +8,7 @@ import 'package:sizer/sizer.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
-  // static String routeName = 'ForgotPasswordScreen';
+  static String routeName = 'ForgotPasswordScreen';
 
   @override
   State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();

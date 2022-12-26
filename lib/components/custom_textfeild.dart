@@ -143,3 +143,21 @@ TextFormField buildPasswordField(name, passController, obscure) {
       },
     );
 }
+
+DropdownButton dropdownButton(List users, String? defaultUser) {
+  return DropdownButton(
+    isExpanded: true,
+    iconEnabledColor: Colors.white,
+    style: TextStyle(color: kPrimaryColor, fontSize: 14),
+    dropdownColor: kTextWhiteColor,
+    focusColor: Colors.black,
+    value: defaultUser,
+      items: users
+        .map((item) => DropdownMenuItem(
+          value: item,
+          child: Text(item)
+      ))
+        .toList(),
+       onChanged: null,
+  );
+}

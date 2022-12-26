@@ -5,6 +5,7 @@ import 'package:EduInfo/screens/add_parent/widget/add_parent_widget.dart';
 import 'package:EduInfo/screens/add_student/add_student.dart';
 import 'package:EduInfo/screens/add_student/widget/add_student_widget.dart';
 import 'package:EduInfo/screens/contact_screen/contact%20screen.dart';
+import 'package:EduInfo/screens/events_screen/add_events_screen.dart';
 import 'package:EduInfo/screens/my_profile/my_profile_setting/my_profile_setting.dart';
 import 'package:EduInfo/screens/splash_screen/splash_screen.dart';
 import 'package:EduInfo/screens/college_cal_screen/college_cal_screen.dart';
@@ -13,7 +14,7 @@ import 'package:EduInfo/screens/teacher_screen/teacher_screen.dart';
 import 'package:EduInfo/screens/time_table_screen/time_table_screen.dart';
 import 'package:EduInfo/screens/result_screen/result_screen.dart';
 import 'package:EduInfo/screens/events_screen/events_screen.dart';
-//import 'screens/forgot_password_screen/forgot_password_screen.dart';
+import 'screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:EduInfo/auth/main_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'screens/assignment_screen/assignment_screen.dart';
@@ -34,7 +35,7 @@ Map<String, WidgetBuilder> routes = {
   FeeScreen.routeName: (context) => FeeScreen(),
   AssignmentScreen.routeName: (context) => AssignmentScreen(),
   DateSheetScreen.routeName: (context) => DateSheetScreen(),
-  //ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
+  ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
   CollegeCalScreen.routeName: (context) => CollegeCalScreen(),
   GalleryScreen.routeName: (context) => GalleryScreen(),
   TimeTableScreen.routeName: (context) => TimeTableScreen(),
@@ -47,4 +48,5 @@ Map<String, WidgetBuilder> routes = {
   TeacherScreen.routeName: (context) => TeacherScreen(),
   ContactScreen.routeName: (context) => ContactScreen(),
   MyProfileSetting.routeName: (context) => MyProfileSetting(),
+  AddEventsScreen.routeName: (context) => AddEventsScreen(),
 };

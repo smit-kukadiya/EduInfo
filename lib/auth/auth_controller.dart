@@ -57,7 +57,6 @@ class AuthController extends GetxController {
     String firstName,
     String lastName,
     String birthDate,
-    bool isLoading,
     // String home,
     // // String business,
     // String shop, 
@@ -88,7 +87,7 @@ class AuthController extends GetxController {
       //     GeoPoint(shoppingLatLng!.latitude, shoppingLatLng.longitude),
     },SetOptions(merge: true)).then((value) {
       isProfileUploading(false);
-      isLoading = false;
+      //isLoading = false;
 
       Get.to(() => const HomeScreen());
     });

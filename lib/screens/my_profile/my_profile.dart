@@ -1,6 +1,4 @@
-
 import 'dart:io';
-
 import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:EduInfo/screens/my_profile/my_profile_setting/my_profile_setting.dart';
 import 'package:get/get.dart';

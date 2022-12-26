@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class MyProfileSetting extends StatefulWidget {
-  MyProfileSetting({Key? key}) : super(key: key);
+  const MyProfileSetting({Key? key}) : super(key: key);
   static String routeName = 'MyProfileSetting';
 
   @override
@@ -39,11 +39,16 @@ class _MyProfileSettingState extends State<MyProfileSetting> {
     }
   }
 
-  bool isLoding = false;
+  //bool isLoding = false;
 
   @override
   void initState() {
-    authController.getUserInfo();
+    //authController.getUserInfo();
+    _mFirstName.text = authController.myUser.value.firstName??"";
+    _mlastName.text = authController.myUser.value.lastName??"";
+    _emailController.text = authController.myUser.value.email??"";
+    _mobileController.text = authController.myUser.value.mobile.toString();
+    _dateOfBirthController.text = authController.myUser.value.birthDate??"";
     //super.initState();
   }
 
@@ -54,15 +59,21 @@ class _MyProfileSettingState extends State<MyProfileSetting> {
       appBar: AppBar(
         title: Text('Editing Profile', style: TextStyle(color: kTextWhiteColor),),
         actions: [
-          isLoding ? 
-          Center(child: CircularProgressIndicator(),)
-           :InkWell(
+          // isLoding ? 
+          // Center(child: CircularProgressIndicator(),):
+          Obx(() => authController.isProfileUploading.value
+                        ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                      :
+                        InkWell(
             onTap: () {
               //send report to school management, in case if you want some changes to your profile
-              setState(() {
-                isLoding = true;
-              });
-              authController.storeUserInfo(selectedImage, _mFirstName.text.trim(), _mlastName.text.trim(), _dateOfBirthController.text.trim(), isLoding);
+              if(!_formKey.currentState!.validate()) return;
+              
+              authController.isProfileUploading(true);
+
+              authController.storeUserInfo(selectedImage, _mFirstName.text.trim(), _mlastName.text.trim(), _dateOfBirthController.text.trim(), url: authController.myUser.value.image??"");
             },
             child: Container(
               padding: EdgeInsets.only(right: kDefaultPadding / 2),
@@ -77,6 +88,7 @@ class _MyProfileSettingState extends State<MyProfileSetting> {
                 ],
               ),
             ),
+          ),
           ),
         ],
       ),
@@ -96,14 +108,14 @@ class _MyProfileSettingState extends State<MyProfileSetting> {
                       children: [
                         sizedBox,
                         Obx(() => authController.myUser.value.wrole == 'parent' ?
-                          Center(
-                          child: null,
-                        ) :
+                          const Center(
+                          child: Text('Hello'),
+                        ) : 
                         GestureDetector(
                           onTap: (){
                             getImage(ImageSource.gallery);
                           },
-                          child: selectedImage == null ? authController.myUser.value.image!=null? CircleAvatar(
+                          child: selectedImage == null ? (authController.myUser.value.image!=null /*|| authController.myUser.value.image!=''*/)? CircleAvatar(
                             radius:
                                 SizerUtil.deviceType == DeviceType.tablet ? 12.w : 13.w,
                             backgroundColor: kSecondaryColor,
@@ -151,7 +163,7 @@ class _MyProfileSettingState extends State<MyProfileSetting> {
                         sizedBox,
                         rowFirstLastName(_mFirstName, 'First Name', _mlastName, 'Last Name'),
                         sizedBox,
-                        buildMobileField(_mobileController, 'Mobile Number'),
+                        buildMobileField(_mobileController, 'Phone Number'),
                         sizedBox,
                         TextFormField(
                           controller: _dateOfBirthController,
@@ -170,7 +182,7 @@ class _MyProfileSettingState extends State<MyProfileSetting> {
                               context: context, 
                               initialDate:DateTime.now(),
                               firstDate:DateTime(1900),
-                              lastDate: DateTime(2100)).then((selectedDate) {
+                              lastDate: DateTime.now()).then((selectedDate) {
                               if (selectedDate != null) {
                                 _dateOfBirthController.text =
                                     DateFormat('yyyy-MM-dd').format(selectedDate);

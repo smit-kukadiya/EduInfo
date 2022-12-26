@@ -52,6 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   // } 
 
   Future signUp() async {
+    try {
     if (passwordConfirmed()) {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: _emailController.text.trim(), 
@@ -64,6 +65,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
         _emailController.text.trim(),
         int.parse(_mobileController.text.trim()),
       );
+    } else {
+      showDialog(context: context, builder: (context) {
+            return AlertDialog(
+              content: Text('Password not match'),
+            );
+          },);
+    }
+     } on FirebaseAuthException catch(e) {
+      if (e.code == 'user-not-found') {
+          showDialog(context: context, builder: (context) {
+            return AlertDialog(
+              content: Text('No user found for that email.'),
+            );
+          },);
+        } else {
+          showDialog(context: context, builder: (context) {
+            return AlertDialog(
+              content: Text(e.message.toString()),
+            );
+          },);
+        }
     }
   }
 
@@ -289,8 +311,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         // ),
       ),
       validator: (value) {
-        if (value!.length < 5) {
-          return 'Must be more than 5 characters';
+        if (value!.length < 8) {
+          return 'At least 8 characters';
         }
       },
     );
