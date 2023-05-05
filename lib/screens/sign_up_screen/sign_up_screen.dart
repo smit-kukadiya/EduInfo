@@ -10,15 +10,17 @@ import '../login_screen/login_screen.dart';
 //late bool _passwordVisible;
 
 class SignUpScreen extends StatefulWidget {
-  final VoidCallback showLoginScreen ;
-  const SignUpScreen({Key? key, required this.showLoginScreen,}) : super(key: key);
+  final VoidCallback showLoginScreen;
+  const SignUpScreen({
+    Key? key,
+    required this.showLoginScreen,
+  }) : super(key: key);
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-
   //text controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -49,49 +51,60 @@ class _SignUpScreenState extends State<SignUpScreen> {
   //   // TODO: implement initState
   //   super.initState();
   //   _passwordVisible = true;
-  // } 
+  // }
 
   Future signUp() async {
     try {
-    if (passwordConfirmed()) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: _emailController.text.trim(), 
-      password: _passwordController.text.trim(),
-      );
+      if (passwordConfirmed()) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
 
-      //add user details
-      addUserDetails(_firstNameController.text.trim(),
-        _lastNameController.text.trim(),
-        _emailController.text.trim(),
-        int.parse(_mobileController.text.trim()),
-      );
-    } else {
-      showDialog(context: context, builder: (context) {
+        //add user details
+        addUserDetails(
+          _firstNameController.text.trim(),
+          _lastNameController.text.trim(),
+          _emailController.text.trim(),
+          int.parse(_mobileController.text.trim()),
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) {
             return AlertDialog(
               content: Text('Password not match'),
             );
-          },);
-    }
-     } on FirebaseAuthException catch(e) {
+          },
+        );
+      }
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-          showDialog(context: context, builder: (context) {
+        showDialog(
+          context: context,
+          builder: (context) {
             return AlertDialog(
               content: Text('No user found for that email.'),
             );
-          },);
-        } else {
-          showDialog(context: context, builder: (context) {
+          },
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) {
             return AlertDialog(
               content: Text(e.message.toString()),
             );
-          },);
-        }
+          },
+        );
+      }
     }
   }
 
-  //String 
+  //String
 
-  Future addUserDetails(String firstName, String lastName, String email, int mobile) async {
+  Future addUserDetails(
+      String firstName, String lastName, String email, int mobile) async {
     String uid = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance.collection("users").doc(uid).set({
       'first name': firstName,
@@ -104,7 +117,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   bool passwordConfirmed() {
-    if (_passwordController.text.trim() == _confirmPasswordController.text.trim()) {
+    if (_passwordController.text.trim() ==
+        _confirmPasswordController.text.trim()) {
       return true;
     } else {
       return false;
@@ -193,15 +207,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         //      onChanged: (item) => setState(() => defaultUser = item),
                         // ),
                         sizedBox,
-                        rowFirstLastName(_firstNameController, 'First Name',  _lastNameController, 'Last Name'),
+                        rowFirstLastName(_firstNameController, 'First Name',
+                            _lastNameController, 'Last Name'),
                         sizedBox,
                         buildEmailField(_emailController, 'Email'),
                         sizedBox,
                         buildMobileField(_mobileController, 'Mobile Number'),
                         sizedBox,
-                        buildPasswordField("Password", _passwordController, true),
+                        buildPasswordField(
+                            "Password", _passwordController, true),
                         sizedBox,
-                        buildPasswordField("Confirm Password", _confirmPasswordController, true),
+                        buildPasswordField("Confirm Password",
+                            _confirmPasswordController, true),
                         sizedBox,
                         DefaultButton(
                           onPress: () {
@@ -230,23 +247,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         //     //         color: kPrimaryColor,
                         //     //         fontWeight: FontWeight.w500),
                         //   ),
-                          sizedBox,
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: GestureDetector(
-                              onTap: widget.showLoginScreen,
-                              child: Text(
-                                'Sign In',
-                                textAlign: TextAlign.end,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle2!
-                                    .copyWith(
-                                    color: kPrimaryColor,
-                                    fontWeight: FontWeight.w500),
-                              ),
+                        sizedBox,
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: GestureDetector(
+                            onTap: widget.showLoginScreen,
+                            child: Text(
+                              'Sign In',
+                              textAlign: TextAlign.end,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle2!
+                                  .copyWith(
+                                      color: kPrimaryColor,
+                                      fontWeight: FontWeight.w500),
                             ),
-
+                          ),
                         ),
                       ],
                     ),
@@ -258,7 +274,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
-
   }
 
   //   TextFormField buildEmailField(name, textName) {

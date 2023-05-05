@@ -47,7 +47,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
             ),
           ),
           Obx(() => authController.myUser.value.wrole != 'teacher' ?
-                    Center(
+                    const Center(
                       child: null,
                     ) :
           Align(
@@ -89,7 +89,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
                   SizedBox(width: 15,),
                   FloatingActionButton(
                     onPressed: (){
-                      print(_message.text.trim());
+                      // print(_message.text.trim());
                       assignment.insert(0,AssignmentData('Prof. '+authController.myUser.value.firstName.toString() + ' ' + authController.myUser.value.lastName.toString(), _message.text.trim(), DateFormat('yyyy-MM-dd').format(DateTime.now())));
                       _message.text = '';
                       setState(() {
