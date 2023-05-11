@@ -1,6 +1,8 @@
 import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:EduInfo/screens/add_parent/add_parent.dart';
 import 'package:EduInfo/screens/add_student/add_student.dart';
+import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart';
+import 'package:EduInfo/screens/assignment_screen/announcement_screen.dart';
 import 'package:EduInfo/screens/contact_screen/contact%20screen.dart';
 import 'package:EduInfo/screens/teacher_screen/teacher_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -57,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
           //fixed height for first half
           Container(
             width: 100.w,
-            height: authController.myUser.value.wrole == 'teacher' ? 35.h : 25.h,
+            height: authController.myUser.value.wrole == 'teacher' ? 32.h : 32.h,
             padding: EdgeInsets.all(kDefaultPadding),
             child:
              Column(
@@ -119,31 +121,31 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                sizedBox,
-                Obx(() => authController.myUser.value.wrole != 'teacher' ?
-                    Center(
-                      child: null,
-                    ) :
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    // StudentDataCard(
-                    //   onPress: () {
-                    //     //go to attendance screen
-                    //   },
-                    //   title: 'Attendance',
-                    //   value: '90.02%',
-                    // ),
-                    StudentDataCard(
-                      onPress: () {
-                        //go to fee due screen
-                        Navigator.pushNamed(context, AssignmentScreen.routeName);
-                      },
-                      title: 'Annoucement',
-                      value: ' ',
-                    ),
-                  ],
-                ), ),
+                // sizedBox,
+                // Obx(() => authController.myUser.value.wrole != 'teacher' ?
+                //     Center(
+                //       child: null,
+                //     ) :
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     StudentDataCard(
+                //       onPress: () {
+                //         //go to attendance screen
+                //       },
+                //       title: 'Attendance',
+                //       value: '90.02%',
+                //     ),
+                //     StudentDataCard(
+                //       onPress: () {
+                //         //go to fee due screen
+                //         Navigator.pushNamed(context, AssignmentScreen.routeName);
+                //       },
+                //       title: 'Annoucement',
+                //       value: ' ',
+                //     ),
+                //   ],
+                // ), ),
               ],
             ),
           ),
@@ -161,10 +163,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 physics: BouncingScrollPhysics(),
                 child: Column(
                   children: [
-                    Obx(() => authController.myUser.value.wrole == 'teacher' ?
-                    Center(
-                      child: null,
-                    ) :
+                    // Obx(() => authController.myUser.value.wrole == 'teacher' ?
+                    // const Center(
+                    //   child: null,
+                    // ) :
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -179,13 +181,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPress: () {
                             //go to assignment screen here
                             Navigator.pushNamed(
-                                context, AssignmentScreen.routeName);
+                                context, AnnouncementDemoScreen.routeName);
                           },
                           icon: 'assets/icons/assignment.svg',
                           title: 'Announcement',
                         ),
                       ],
-                    ), ),
+                    ), 
+                    //),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [

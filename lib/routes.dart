@@ -14,6 +14,8 @@ import 'package:EduInfo/screens/teacher_screen/teacher_screen.dart';
 import 'package:EduInfo/screens/time_table_screen/time_table_screen.dart';
 import 'package:EduInfo/screens/result_screen/result_screen.dart';
 import 'package:EduInfo/screens/events_screen/events_screen.dart';
+import 'package:EduInfo/screens/assignment_screen/announcement_screen.dart';
+import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart';
 import 'screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:EduInfo/auth/main_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,4 +51,6 @@ Map<String, WidgetBuilder> routes = {
   ContactScreen.routeName: (context) => ContactScreen(),
   MyProfileSetting.routeName: (context) => MyProfileSetting(),
   AddEventsScreen.routeName: (context) => AddEventsScreen(),
+  AnnouncementScreen.routeName: (context) => AnnouncementScreen(),
+  AnnouncementDemoScreen.routeName: (context) => AnnouncementDemoScreen(),
 };
