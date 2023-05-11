@@ -49,7 +49,15 @@ class _GroupChatHomeScreenState extends State<GroupChatHomeScreen> {
       appBar: AppBar(
         title: Text("Groups", style: TextStyle(color: kTextWhiteColor),),
       ),
-      body: isLoading
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: kTopBorderRadius,
+                color: kOtherColor,
+              ),
+              child:isLoading
           ? Container(
               height: size.height,
               width: size.width,
@@ -73,6 +81,10 @@ class _GroupChatHomeScreenState extends State<GroupChatHomeScreen> {
                 );
               },
             ),
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.create),
         onPressed: () => Navigator.of(context).push(

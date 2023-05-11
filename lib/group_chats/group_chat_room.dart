@@ -1,3 +1,5 @@
+import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:EduInfo/constants.dart';
 import 'package:EduInfo/group_chats/group_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

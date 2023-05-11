@@ -137,7 +137,7 @@ class _AnnouncementDemoScreenState extends State<AnnouncementDemoScreen> with Wi
                     ? ListTile(
                         onTap: () {
                           String roomId = chatRoomId(
-                              _auth.currentUser!.displayName!,
+                              _auth.currentUser!.email!,
                               userMap!['email']);
 
                           Navigator.of(context).push(
@@ -172,7 +172,7 @@ class _AnnouncementDemoScreenState extends State<AnnouncementDemoScreen> with Wi
         child: const Icon(Icons.group),
         onPressed: () => Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => GroupChatHomeScreen(),
+            builder: (_) => const GroupChatHomeScreen(),
           ),
         ),
       ),

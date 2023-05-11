@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:EduInfo/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -77,7 +79,7 @@ class ChatRoom extends StatelessWidget {
   void onSendMessage() async {
     if (_message.text.isNotEmpty) {
       Map<String, dynamic> messages = {
-        "sendby": _auth.currentUser!.displayName,
+        "sendby": _auth.currentUser!.email,
         "message": _message.text,
         "type": "text",
         "time": FieldValue.serverTimestamp(),
@@ -108,11 +110,11 @@ class ChatRoom extends StatelessWidget {
               return Container(
                 child: Column(
                   children: [
-                    Text(userMap['name']),
-                    Text(
-                      snapshot.data!['status'],
-                      style: TextStyle(fontSize: 14),
-                    ),
+                    Text(userMap['email'], style: TextStyle(color: kTextWhiteColor),),
+                    // Text(
+                    //   snapshot.data!['role'],
+                    //   style: TextStyle(fontSize: 14, color: kTextWhiteColor),
+                    // ),
                   ],
                 ),
               );
@@ -122,7 +124,15 @@ class ChatRoom extends StatelessWidget {
           },
         ),
       ),
-      body: SingleChildScrollView(
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: kTopBorderRadius,
+                color: kOtherColor,
+              ),
+      child: SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -187,6 +197,10 @@ class ChatRoom extends StatelessWidget {
           ],
         ),
       ),
+            ),
+          ),
+        ],
+      ), 
     );
   }
 
