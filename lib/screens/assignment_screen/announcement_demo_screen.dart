@@ -137,8 +137,8 @@ class _AnnouncementDemoScreenState extends State<AnnouncementDemoScreen> with Wi
                     ? ListTile(
                         onTap: () {
                           String roomId = chatRoomId(
-                              _auth.currentUser!.email!,
-                              userMap!['email']);
+                              _auth.currentUser!.uid,
+                              userMap!['uid']);
 
                           Navigator.of(context).push(
                             MaterialPageRoute(

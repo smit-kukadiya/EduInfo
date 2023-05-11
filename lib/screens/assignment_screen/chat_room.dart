@@ -42,7 +42,7 @@ class ChatRoom extends StatelessWidget {
         .collection('chats')
         .doc(fileName)
         .set({
-      "sendby": _auth.currentUser!.displayName,
+      "sendby": _auth.currentUser!.email,
       "message": "",
       "type": "img",
       "time": FieldValue.serverTimestamp(),
@@ -136,7 +136,7 @@ class ChatRoom extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: size.height / 1.25,
+              height: size.height / 1.30,
               width: size.width,
               child: StreamBuilder<QuerySnapshot>(
                 stream: _firestore
@@ -208,7 +208,7 @@ class ChatRoom extends StatelessWidget {
     return map['type'] == "text"
         ? Container(
             width: size.width,
-            alignment: map['sendby'] == _auth.currentUser!.displayName
+            alignment: map['sendby'] == _auth.currentUser!.email
                 ? Alignment.centerRight
                 : Alignment.centerLeft,
             child: Container(
