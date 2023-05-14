@@ -40,7 +40,7 @@ class GroupChatRoom extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(groupName),
+        title: Text(groupName, style: TextStyle(color: kTextWhiteColor),),
         actions: [
           IconButton(
               onPressed: () => Navigator.of(context).push(
@@ -54,7 +54,15 @@ class GroupChatRoom extends StatelessWidget {
               icon: Icon(Icons.more_vert)),
         ],
       ),
-      body: SingleChildScrollView(
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: kTopBorderRadius,
+                color: kOtherColor,
+              ),
+      child: SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -120,6 +128,10 @@ class GroupChatRoom extends StatelessWidget {
           ],
         ),
       ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -128,7 +140,7 @@ class GroupChatRoom extends StatelessWidget {
       if (chatMap['type'] == "text") {
         return Container(
           width: size.width,
-          alignment: chatMap['sendBy'] == _auth.currentUser!.displayName
+          alignment: chatMap['sendBy'] == _auth.currentUser!.email
               ? Alignment.centerRight
               : Alignment.centerLeft,
           child: Container(
@@ -165,7 +177,7 @@ class GroupChatRoom extends StatelessWidget {
       } else if (chatMap['type'] == "img") {
         return Container(
           width: size.width,
-          alignment: chatMap['sendBy'] == _auth.currentUser!.displayName
+          alignment: chatMap['sendBy'] == _auth.currentUser!.email
               ? Alignment.centerRight
               : Alignment.centerLeft,
           child: Container(

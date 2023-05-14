@@ -1,3 +1,4 @@
+import 'package:EduInfo/constants.dart';
 import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -46,7 +47,7 @@ class _CreateGroupState extends State<CreateGroup> {
     }
 
     await _firestore.collection('groups').doc(groupId).collection('chats').add({
-      "message": "${_auth.currentUser!.displayName} Created This Group.",
+      "message": "${_auth.currentUser!.email} Created This Group.",
       "type": "notify",
     });
 
@@ -60,9 +61,17 @@ class _CreateGroupState extends State<CreateGroup> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Group Name"),
+        title: Text("Group Name", style: TextStyle(color: kTextWhiteColor),),
       ),
-      body: isLoading
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: kTopBorderRadius,
+                color: kOtherColor,
+              ),
+      child: isLoading
           ? Container(
               height: size.height,
               width: size.width,
@@ -100,7 +109,10 @@ class _CreateGroupState extends State<CreateGroup> {
                   child: Text("Create Group"),
                 ),
               ],
-            ),
+            ),),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:EduInfo/constants.dart';
 import 'package:EduInfo/group_chats/create_group/create_group.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -32,7 +33,7 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
         .then((map) {
       setState(() {
         membersList.add({
-          "name": map['name'],
+          "first name": map['first name'],
           "email": map['email'],
           "uid": map['uid'],
           "isAdmin": true,
@@ -71,7 +72,7 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
     if (!isAlreadyExist) {
       setState(() {
         membersList.add({
-          "name": userMap!['name'],
+          "first name": userMap!['first name'],
           "email": userMap!['email'],
           "uid": userMap!['uid'],
           "isAdmin": false,
@@ -96,9 +97,17 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Members"),
+        title: Text("Add Members", style: TextStyle(color: kTextWhiteColor),),
       ),
-      body: SingleChildScrollView(
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: kTopBorderRadius,
+                color: kOtherColor,
+              ),
+      child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -111,7 +120,7 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
                   return ListTile(
                     onTap: () => onRemoveMembers(index),
                     leading: Icon(Icons.account_circle),
-                    title: Text(membersList[index]['name']),
+                    title: Text(membersList[index]['first name']),
                     subtitle: Text(membersList[index]['email']),
                     trailing: Icon(Icons.close),
                   );
@@ -157,13 +166,17 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
                 ? ListTile(
                     onTap: onResultTap,
                     leading: Icon(Icons.account_box),
-                    title: Text(userMap!['name']),
+                    title: Text(userMap!['first name']),
                     subtitle: Text(userMap!['email']),
                     trailing: Icon(Icons.add),
                   )
                 : SizedBox(),
           ],
         ),
+      ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: membersList.length >= 2
           ? FloatingActionButton(

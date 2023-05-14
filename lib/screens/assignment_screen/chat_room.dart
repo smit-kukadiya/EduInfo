@@ -232,7 +232,7 @@ class ChatRoom extends StatelessWidget {
             height: size.height / 2.5,
             width: size.width,
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-            alignment: map['sendby'] == _auth.currentUser!.displayName
+            alignment: map['sendby'] == _auth.currentUser!.email
                 ? Alignment.centerRight
                 : Alignment.centerLeft,
             child: InkWell(
