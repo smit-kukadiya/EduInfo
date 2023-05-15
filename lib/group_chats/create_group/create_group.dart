@@ -1,5 +1,8 @@
 import 'package:EduInfo/constants.dart';
+import 'package:EduInfo/group_chats/group_chat_room.dart';
+import 'package:EduInfo/group_chats/group_chat_screen.dart';
 import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart';
+import 'package:EduInfo/screens/home_screen/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +55,7 @@ class _CreateGroupState extends State<CreateGroup> {
     });
 
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => AnnouncementDemoScreen()), (route) => false);
+        MaterialPageRoute(builder: (_) => GroupChatHomeScreen()), (route) => false);
   }
 
   @override

@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 
 class GroupChatHomeScreen extends StatefulWidget {
   const GroupChatHomeScreen({Key? key}) : super(key: key);
+  static String routeName = 'GroupChatHomeScreen';
 
   @override
-  _GroupChatHomeScreenState createState() => _GroupChatHomeScreenState();
+  State<GroupChatHomeScreen> createState() => _GroupChatHomeScreenState();
 }
 
 class _GroupChatHomeScreenState extends State<GroupChatHomeScreen> {
@@ -47,7 +48,7 @@ class _GroupChatHomeScreenState extends State<GroupChatHomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Groups", style: TextStyle(color: kTextWhiteColor),),
+        title: Text("Announcement", style: TextStyle(color: kTextWhiteColor),),
       ),
       body: Column(
         children: [

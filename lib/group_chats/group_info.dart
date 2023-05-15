@@ -1,5 +1,6 @@
 import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart';
 import 'package:EduInfo/group_chats/add_members.dart';
+import 'package:EduInfo/screens/home_screen/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -116,7 +117,7 @@ class _GroupInfoState extends State<GroupInfo> {
           .delete();
 
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => AnnouncementDemoScreen()),
+        MaterialPageRoute(builder: (_) => HomeScreen()),
         (route) => false,
       );
     }
@@ -237,13 +238,16 @@ class _GroupInfoState extends State<GroupInfo> {
                             onTap: () => showDialogBox(index),
                             leading: Icon(Icons.account_circle),
                             title: Text(
-                              membersList[index]['name'],
+                              membersList[index]['first name'],
                               style: TextStyle(
                                 fontSize: size.width / 22,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            subtitle: Text(membersList[index]['email']),
+                            subtitle: Text(membersList[index]['email'],
+                              style: TextStyle(
+                                fontSize: size.width / 22,),
+                            ),
                             trailing: Text(
                                 membersList[index]['isAdmin'] ? "Admin" : ""),
                           );

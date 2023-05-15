@@ -1,3 +1,4 @@
+import 'package:EduInfo/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -68,9 +69,17 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Members"),
+        title: Text("Add Members", style: TextStyle(color: kTextWhiteColor),),
       ),
-      body: SingleChildScrollView(
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: kTopBorderRadius,
+                color: kOtherColor,
+              ),
+      child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -120,6 +129,10 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
                 : SizedBox(),
           ],
         ),
+      ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,0 +1,3 @@
+Payment fees section
+Contact detail for student and parent
+Event Section to connect database and redirect data

@@ -16,6 +16,7 @@ import 'package:EduInfo/screens/result_screen/result_screen.dart';
 import 'package:EduInfo/screens/events_screen/events_screen.dart';
 import 'package:EduInfo/screens/assignment_screen/announcement_screen.dart';
 import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart';
+import 'package:EduInfo/group_chats/group_chat_screen.dart';
 import 'screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:EduInfo/auth/main_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,4 +54,5 @@ Map<String, WidgetBuilder> routes = {
   AddEventsScreen.routeName: (context) => AddEventsScreen(),
   AnnouncementScreen.routeName: (context) => AnnouncementScreen(),
   AnnouncementDemoScreen.routeName: (context) => AnnouncementDemoScreen(),
+  GroupChatHomeScreen.routeName: (context) => GroupChatHomeScreen(),
 };

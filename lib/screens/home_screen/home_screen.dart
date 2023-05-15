@@ -1,4 +1,5 @@
 import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:EduInfo/group_chats/group_chat_screen.dart';
 import 'package:EduInfo/screens/add_parent/add_parent.dart';
 import 'package:EduInfo/screens/add_student/add_student.dart';
 import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart';
@@ -18,6 +19,7 @@ import 'package:EduInfo/screens/my_profile/my_profile.dart';
 import 'package:EduInfo/screens/events_screen/events_screen.dart';
 import 'package:EduInfo/screens/result_screen/result_screen.dart';
 import 'package:EduInfo/screens/time_table_screen/time_table_screen.dart';
+import 'package:EduInfo/group_chats/group_chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
@@ -181,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPress: () {
                             //go to assignment screen here
                             Navigator.pushNamed(
-                                context, AnnouncementDemoScreen.routeName);
+                                context, GroupChatHomeScreen.routeName);
                           },
                           icon: 'assets/icons/assignment.svg',
                           title: 'Announcement',

@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:uuid/uuid.dart';
 import '../../components/custom_buttons.dart';
 import '../../constants.dart';
 import '../login_screen/login_screen.dart';
@@ -30,6 +31,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _mobileController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+  List<Map<String, dynamic>> membersList = [];
+  Map<String, dynamic>? userMap;
 
   // List<String> users = ['Student', 'Teacher', 'Parent'];
   // String? defaultUser = 'Student';
@@ -106,6 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Future addUserDetails(
       String firstName, String lastName, String email, int mobile) async {
     String uid = FirebaseAuth.instance.currentUser!.uid;
+    String groupId = Uuid().v1();
     await FirebaseFirestore.instance.collection("users").doc(uid).set({
       'first name': firstName,
       'last name': lastName,
@@ -113,6 +117,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
       'mobile': mobile,
       'role': 'teacher',
       'uid': FirebaseAuth.instance.currentUser?.uid.toString(),
+    });
+    await FirebaseFirestore.instance.collection('groups').doc(groupId).set({
+      "id": groupId,
+      //"members": 
+    });
+    await FirebaseFirestore.instance.collection('users').doc(uid).collection('groups').doc(groupId).set({
+      "name": "Default",
+      'id':groupId
+    });
+    await FirebaseFirestore.instance.collection('groups').doc(groupId).collection('chats').add({
+      "message": "$email Created This Group.",
+      "type": "notify",
     });
   }
 
