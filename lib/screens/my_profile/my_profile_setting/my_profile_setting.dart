@@ -73,7 +73,7 @@ class _MyProfileSettingState extends State<MyProfileSetting> {
               
               authController.isProfileUploading(true);
 
-              authController.storeUserInfo(selectedImage, _mFirstName.text.trim(), _mlastName.text.trim(), _dateOfBirthController.text.trim(), url: authController.myUser.value.image??"");
+              authController.storeUserInfo(selectedImage, _mFirstName.text.trim(), _mlastName.text.trim(), _dateOfBirthController.text.trim(), int.parse(_mobileController.text.trim()) , url: authController.myUser.value.image??"");
             },
             child: Container(
               padding: EdgeInsets.only(right: kDefaultPadding / 2),

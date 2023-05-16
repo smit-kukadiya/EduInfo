@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:EduInfo/screens/home_screen/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart' as Path;
 import 'package:EduInfo/model/users_model/users_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +19,7 @@ class AuthController extends GetxController {
   dynamic cradentials;
 
   var isProfileUploading = false.obs;
+  var isPaymentUploading = false.obs;
 
   // storeUserInfo(File selectedImage, String name, String home, String business, String shop) async {
   //   String url = await 
@@ -58,6 +60,7 @@ class AuthController extends GetxController {
     String firstName,
     String lastName,
     String birthDate,
+    int number,
     // String home,
     // // String business,
     // String shop, 
@@ -78,6 +81,7 @@ class AuthController extends GetxController {
       'first name': firstName,
       'last name': lastName,
       'birth date': birthDate,
+      'mobile': number,
       // 'home_address': home,
       // 'business_address': business,
       // 'shopping_address': shop,
@@ -89,6 +93,23 @@ class AuthController extends GetxController {
     },SetOptions(merge: true)).then((value) {
       isProfileUploading(false);
       //isLoading = false;
+
+      Get.to(() => const HomeScreen());
+    });
+  }
+
+  storePaymentInfo(
+    String accountNo,
+    String ifscCode,
+    String recipientName,
+    ) async {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    FirebaseFirestore.instance.collection('users').doc(uid).set({
+      'account no': accountNo,
+      'ifsc code': ifscCode,
+      'recipient name': recipientName,
+    },SetOptions(merge: true)).then((value) {
+      isPaymentUploading(false);
 
       Get.to(() => const HomeScreen());
     });

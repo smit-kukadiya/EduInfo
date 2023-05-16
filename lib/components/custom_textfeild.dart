@@ -112,6 +112,27 @@ TextFormField buildMobileField(TextEditingController controllerName, String labl
     );
 }
 
+TextFormField buildTextField(TextEditingController controllerName, String labletxt) {
+    return TextFormField(
+      controller: controllerName,
+      textAlign: TextAlign.start,
+      keyboardType: TextInputType.text,
+      style: kInputTextStyle,
+      decoration: InputDecoration(
+        labelText: labletxt,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+      validator: (value) {
+      if (value == null || value.isEmpty) {
+          return 'Please enter some text';
+          //if it does not matches the pattern, like
+          //it not contains @
+        }
+      return null;
+    },
+    );
+}
+
 TextFormField buildPasswordField(name, passController, obscure) {
     return TextFormField(
       controller: passController,

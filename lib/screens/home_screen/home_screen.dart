@@ -5,6 +5,7 @@ import 'package:EduInfo/screens/add_student/add_student.dart';
 import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart';
 import 'package:EduInfo/screens/assignment_screen/announcement_screen.dart';
 import 'package:EduInfo/screens/contact_screen/contact%20screen.dart';
+import 'package:EduInfo/screens/fees_detail_screen/fees_detail_screen.dart';
 import 'package:EduInfo/screens/teacher_screen/teacher_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -171,14 +172,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     // ) :
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
+                      children: [Obx(() => authController.myUser.value.wrole == 'teacher' ?
+                     HomeCard(
+                          onPress: () {
+                            Navigator.pushNamed(context, FeesDetailScreen.routeName);
+                          },
+                          icon: 'assets/icons/quiz.svg',
+                          title: 'Payment Details',
+                        )
+                    :
                         HomeCard(
                           onPress: () {
                             Navigator.pushNamed(context, FeeScreen.routeName);
                           },
                           icon: 'assets/icons/quiz.svg',
                           title: 'Pay Fees',
-                        ),
+                        ), ),
                         HomeCard(
                           onPress: () {
                             //go to assignment screen here
