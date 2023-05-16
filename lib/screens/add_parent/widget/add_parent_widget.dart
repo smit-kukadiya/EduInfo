@@ -41,6 +41,7 @@ class AddParentUsers extends StatelessWidget {
         'role': 'parent',
         'tuid': teacher,
         'uid': parentUID,
+        'first name': ''
       });
 
       await FirebaseFirestore.instance.collection('users').doc(teacher).update({
@@ -87,7 +88,7 @@ class AddParentUsers extends StatelessWidget {
         .doc(parentUID)
         .collection('groups')
         .doc(groupParent)
-        .set({"name": 'Default', "id": groupParent});
+        .set({"name": 'Parents', "id": groupParent});
       
       app.delete();
   }

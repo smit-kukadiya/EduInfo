@@ -1,4 +1,5 @@
 import 'package:EduInfo/constants.dart';
+import 'package:EduInfo/group_chats/group_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
   Map<String, dynamic>? userMap;
   bool isLoading = false;
   List membersList = [];
+  late String firstName, email, uid;
 
   @override
   void initState() {
@@ -49,7 +51,17 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
   }
 
   void onAddMembers() async {
-    membersList.add(userMap);
+    if(userMap!['first name'] == '') {
+      firstName = userMap!['first name'];
+    }
+    email = userMap!['email'];
+    uid = userMap!['uid'];
+    membersList.add({
+      "first name": firstName,
+          "email": email,
+          "uid": uid,
+          "isAdmin": false,
+    });
 
     await _firestore.collection('groups').doc(widget.groupChatId).update({
       "members": membersList,
@@ -61,6 +73,14 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
         .collection('groups')
         .doc(widget.groupChatId)
         .set({"name": widget.name, "id": widget.groupChatId});
+
+    Navigator.of(context).push( 
+      MaterialPageRoute(
+        builder: (_) => GroupInfo(groupName: widget.name,
+                        groupId: widget.groupChatId,
+                        ),
+                        ),
+                        );
   }
 
   @override

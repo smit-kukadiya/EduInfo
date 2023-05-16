@@ -1,3 +1,4 @@
+import 'package:EduInfo/auth/main_page.dart';
 import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart';
 import 'package:EduInfo/group_chats/add_members.dart';
 import 'package:EduInfo/screens/home_screen/home_screen.dart';
@@ -118,10 +119,7 @@ class _GroupInfoState extends State<GroupInfo> {
           .doc(widget.groupId)
           .delete();
 
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => HomeScreen()),
-        (route) => false,
-      );
+      Navigator.pushNamed(context, MainPage.routeName);
     }
   }
 
@@ -251,7 +249,10 @@ class _GroupInfoState extends State<GroupInfo> {
                                 fontSize: size.width / 22,),
                             ),
                             trailing: Text(
-                                membersList[index]['isAdmin'] ? "Admin" : ""),
+                                membersList[index]['isAdmin'] ? "Admin" : "",
+                                style: TextStyle(
+                                fontSize: size.width / 20,),
+                                ),
                           );
                         },
                       ),

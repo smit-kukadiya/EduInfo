@@ -33,7 +33,7 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
         .then((map) {
       setState(() {
         membersList.add({
-          "first name": map['first name'],
+          "first name": map['uid'],
           "email": map['email'],
           "uid": map['uid'],
           "isAdmin": true,
@@ -72,7 +72,7 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
     if (!isAlreadyExist) {
       setState(() {
         membersList.add({
-          "first name": userMap!['first name'],
+          "first name": userMap!['uid'],
           "email": userMap!['email'],
           "uid": userMap!['uid'],
           "isAdmin": false,
@@ -120,7 +120,7 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
                   return ListTile(
                     onTap: () => onRemoveMembers(index),
                     leading: Icon(Icons.account_circle),
-                    title: Text(membersList[index]['first name']),
+                    title: Text(membersList[index]['uid']),
                     subtitle: Text(membersList[index]['email'],
                               style: TextStyle(
                                 fontSize: size.width / 22,),),
@@ -168,7 +168,7 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
                 ? ListTile(
                     onTap: onResultTap,
                     leading: Icon(Icons.account_box),
-                    title: Text(userMap!['first name']),
+                    title: Text(userMap!['uid']),
                     subtitle: Text(userMap!['email'],
                               style: TextStyle(
                                 fontSize: size.width / 22,),),

@@ -1,3 +1,4 @@
+import 'package:EduInfo/auth/main_page.dart';
 import 'package:EduInfo/constants.dart';
 import 'package:EduInfo/group_chats/group_chat_room.dart';
 import 'package:EduInfo/group_chats/group_chat_screen.dart';
@@ -32,6 +33,7 @@ class _CreateGroupState extends State<CreateGroup> {
 
     await _firestore.collection('groups').doc(groupId).set({
       "members": widget.membersList,
+      "isMain": false,
       "id": groupId,
     });
 
@@ -54,8 +56,7 @@ class _CreateGroupState extends State<CreateGroup> {
       "type": "notify",
     });
 
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => GroupChatHomeScreen()), (route) => false);
+    Navigator.pushNamed(context, MainPage.routeName);
   }
 
   @override

@@ -48,6 +48,7 @@ class AddStudentUsers extends StatelessWidget {
         'role': 'student',
         'tuid': teacher,
         'uid': studentUID,
+        'first name': ''
       });
 
       membersDefaultList.add({
@@ -90,7 +91,7 @@ class AddStudentUsers extends StatelessWidget {
         .doc(studentUID)
         .collection('groups')
         .doc(groupStudent)
-        .set({"name": 'Default', "id": groupStudent});
+        .set({"name": 'Students', "id": groupStudent});
     
       app.delete();
   }
