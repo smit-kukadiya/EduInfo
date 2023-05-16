@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:EduInfo/screens/home_screen/home_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart' as Path;
 import 'package:EduInfo/model/users_model/users_model.dart';

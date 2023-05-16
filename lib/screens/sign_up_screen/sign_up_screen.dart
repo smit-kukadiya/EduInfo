@@ -109,24 +109,62 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Future addUserDetails(
       String firstName, String lastName, String email, int mobile) async {
     String uid = FirebaseAuth.instance.currentUser!.uid;
-    String groupId = Uuid().v1();
+    String groupDefaultId = Uuid().v1();
+    String groupStudentId = Uuid().v1();
+    String groupParentId = Uuid().v1();
+    membersList.add({
+          "first name": firstName,
+          "email": email,
+          "uid": uid,
+          "isAdmin": true,
+        });
     await FirebaseFirestore.instance.collection("users").doc(uid).set({
       'first name': firstName,
       'last name': lastName,
       'email': email,
       'mobile': mobile,
       'role': 'teacher',
+      'group default': groupDefaultId,
+      'group student': groupStudentId,
+      'group parent': groupParentId,
       'uid': FirebaseAuth.instance.currentUser?.uid.toString(),
     });
-    await FirebaseFirestore.instance.collection('groups').doc(groupId).set({
-      "id": groupId,
-      //"members": 
+    await FirebaseFirestore.instance.collection('groups').doc(groupDefaultId).set({
+      "id": groupDefaultId,
+      "isMain": true,
+      "members": membersList,
     });
-    await FirebaseFirestore.instance.collection('users').doc(uid).collection('groups').doc(groupId).set({
+    await FirebaseFirestore.instance.collection('users').doc(uid).collection('groups').doc(groupDefaultId).set({
       "name": "Default",
-      'id':groupId
+      'id':groupDefaultId
     });
-    await FirebaseFirestore.instance.collection('groups').doc(groupId).collection('chats').add({
+    await FirebaseFirestore.instance.collection('groups').doc(groupDefaultId).collection('chats').add({
+      "message": "$email Created This Group.",
+      "type": "notify",
+    });
+    await FirebaseFirestore.instance.collection('groups').doc(groupStudentId).set({
+      "id": groupStudentId,
+      "isMain": true,
+      "members": membersList,
+    });
+    await FirebaseFirestore.instance.collection('users').doc(uid).collection('groups').doc(groupStudentId).set({
+      "name": "Students",
+      'id':groupStudentId
+    });
+    await FirebaseFirestore.instance.collection('groups').doc(groupStudentId).collection('chats').add({
+      "message": "$email Created This Group.",
+      "type": "notify",
+    });
+    await FirebaseFirestore.instance.collection('groups').doc(groupParentId).set({
+      "id": groupParentId,
+      "isMain": true,
+      "members": membersList,
+    });
+    await FirebaseFirestore.instance.collection('users').doc(uid).collection('groups').doc(groupParentId).set({
+      "name": "Parents",
+      'id':groupParentId
+    });
+    await FirebaseFirestore.instance.collection('groups').doc(groupParentId).collection('chats').add({
       "message": "$email Created This Group.",
       "type": "notify",
     });

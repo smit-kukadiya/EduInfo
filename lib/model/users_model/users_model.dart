@@ -8,8 +8,11 @@ class UsersModel {
   String? image;
   int? mobile;
   String? birthDate;
+  String? groupDefault;
+  String? groupStudent;
+  String? groupParent;
 
-  UsersModel({this.firstName, this.lastName, this.email, this.uid, this.wrole, this.image, this.mobile, this.birthDate, this.tuid});
+  UsersModel({this.firstName, this.lastName, this.email, this.uid, this.wrole, this.image, this.mobile, this.birthDate, this.tuid, this.groupDefault, this.groupStudent, this.groupParent});
 
   UsersModel.fromJson(Map<String, dynamic> json) {
     firstName = json['first name'];
@@ -21,5 +24,8 @@ class UsersModel {
     mobile = json['mobile'];
     birthDate = json['birth date'];
     tuid = json['tuid'];
+    groupDefault = json['group default'];
+    groupStudent = json['group student'];
+    groupParent = json['group parent'];
   }
 }

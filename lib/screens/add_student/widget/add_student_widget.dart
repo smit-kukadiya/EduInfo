@@ -1,3 +1,4 @@
+import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:EduInfo/auth/auth_page.dart';
 import 'package:EduInfo/auth/main_page.dart';
 import 'package:EduInfo/components/custom_buttons.dart';
@@ -9,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:get/get.dart';
 
 class AddStudentUsers extends StatelessWidget {
   AddStudentUsers({Key? key}) : super(key: key);
@@ -16,6 +18,9 @@ class AddStudentUsers extends StatelessWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  List membersDefaultList = [];
+  List membersStudentList = [];
+  AuthController authController = Get.put(AuthController());
 
   late FirebaseAuth mAuth1;
   
@@ -34,6 +39,10 @@ class AddStudentUsers extends StatelessWidget {
 
       studentUID = FirebaseAuth.instanceFor(app: app).currentUser!.uid.toString();
 
+      await FirebaseFirestore.instance.collection('users').doc(teacher).update({
+                  'students': FieldValue.arrayUnion([studentUID]),
+      });
+
       await FirebaseFirestore.instance.collection('users').doc(studentUID).set({
         'email': _emailController.text.trim(),
         'role': 'student',
@@ -41,9 +50,47 @@ class AddStudentUsers extends StatelessWidget {
         'uid': studentUID,
       });
 
-      await FirebaseFirestore.instance.collection('users').doc(teacher).update({
-                  'students': FieldValue.arrayUnion([studentUID]),
+      membersDefaultList.add({
+          "first name": null,
+          "email": _emailController.text.trim(),
+          "uid": studentUID,
+          "isAdmin": false,
+        });
+      membersStudentList.add({
+          "first name": null,
+          "email": _emailController.text.trim(),
+          "uid": studentUID,
+          "isAdmin": false,
+        });
+        
+      final groupDefault = authController.myUser.value.groupDefault;
+      final groupStudent = authController.myUser.value.groupStudent;
+
+      final membersDefault = await FirebaseFirestore.instance.collection('groups').doc(groupDefault).get().then((DocumentSnapshot doc) => doc.data() as Map<String, dynamic>);
+      final membersStudent = await FirebaseFirestore.instance.collection('groups').doc(groupStudent).get().then((DocumentSnapshot doc) => doc.data() as Map<String, dynamic>); 
+      
+      membersDefaultList.addAll(membersDefault['members']);
+      membersStudentList.addAll(membersStudent['members']);
+
+      await FirebaseFirestore.instance.collection('groups').doc(groupDefault).update({
+      "members": membersDefaultList,
       });
+      await FirebaseFirestore.instance.collection('groups').doc(groupStudent).update({
+      "members": membersStudentList,
+      });
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(studentUID)
+        .collection('groups')
+        .doc(groupDefault)
+        .set({"name": 'Default', "id": groupDefault});
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(studentUID)
+        .collection('groups')
+        .doc(groupStudent)
+        .set({"name": 'Default', "id": groupStudent});
     
       app.delete();
   }

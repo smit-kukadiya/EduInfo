@@ -16,6 +16,7 @@ class GroupInfo extends StatefulWidget {
 
 class _GroupInfoState extends State<GroupInfo> {
   List membersList = [];
+  late bool isMain;
   bool isLoading = true;
 
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -34,6 +35,7 @@ class _GroupInfoState extends State<GroupInfo> {
         .doc(widget.groupId)
         .get()
         .then((chatMap) {
+      isMain = chatMap['isMain'];
       membersList = chatMap['members'];
       print(membersList);
       isLoading = false;
@@ -238,7 +240,7 @@ class _GroupInfoState extends State<GroupInfo> {
                             onTap: () => showDialogBox(index),
                             leading: Icon(Icons.account_circle),
                             title: Text(
-                              membersList[index]['first name'],
+                              membersList[index]['uid'],
                               style: TextStyle(
                                 fontSize: size.width / 22,
                                 fontWeight: FontWeight.w500,
@@ -255,21 +257,25 @@ class _GroupInfoState extends State<GroupInfo> {
                       ),
                     ),
 
-                    ListTile(
-                      onTap: onLeaveGroup,
-                      leading: Icon(
-                        Icons.logout,
-                        color: Colors.redAccent,
-                      ),
-                      title: Text(
-                        "Leave Group",
-                        style: TextStyle(
-                          fontSize: size.width / 22,
-                          fontWeight: FontWeight.w500,
+                    
+                    Container(
+                      child: !isMain?
+                        ListTile(
+                        onTap: onLeaveGroup,
+                        leading: Icon(
+                          Icons.logout,
                           color: Colors.redAccent,
                         ),
-                      ),
-                    ),
+                        title: Text(
+                          "Leave Group",
+                          style: TextStyle(
+                            fontSize: size.width / 22,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.redAccent,
+                          ),
+                        ),
+                      ) : null,
+                    ), 
                   ],
                 ),
               ),

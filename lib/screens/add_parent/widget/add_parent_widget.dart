@@ -1,3 +1,4 @@
+import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:EduInfo/auth/auth_page.dart';
 import 'package:EduInfo/auth/main_page.dart';
 import 'package:EduInfo/components/custom_buttons.dart';
@@ -9,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:get/get.dart';
 
 class AddParentUsers extends StatelessWidget {
   AddParentUsers({Key? key}) : super(key: key);
@@ -16,6 +18,9 @@ class AddParentUsers extends StatelessWidget {
 
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  List membersDefaultList = [];
+  List membersParentList = [];
+  AuthController authController = Get.put(AuthController());
 
   late FirebaseAuth mAuth1;
   
@@ -41,6 +46,48 @@ class AddParentUsers extends StatelessWidget {
       await FirebaseFirestore.instance.collection('users').doc(teacher).update({
                   'parents': FieldValue.arrayUnion([parentUID]),
       });
+
+      membersDefaultList.add({
+          "first name": null,
+          "email": _emailController.text.trim(),
+          "uid": parentUID,
+          "isAdmin": false,
+        });
+      membersParentList.add({
+          "first name": null,
+          "email": _emailController.text.trim(),
+          "uid": parentUID,
+          "isAdmin": false,
+        });
+        
+      final groupDefault = authController.myUser.value.groupDefault;
+      final groupParent = authController.myUser.value.groupParent;
+
+      final membersDefault = await FirebaseFirestore.instance.collection('groups').doc(groupDefault).get().then((DocumentSnapshot doc) => doc.data() as Map<String, dynamic>);
+      final membersParent = await FirebaseFirestore.instance.collection('groups').doc(groupParent).get().then((DocumentSnapshot doc) => doc.data() as Map<String, dynamic>); 
+      
+      membersDefaultList.addAll(membersDefault['members']);
+      membersParentList.addAll(membersParent['members']);
+
+      await FirebaseFirestore.instance.collection('groups').doc(groupDefault).update({
+      "members": membersDefaultList,
+      });
+      await FirebaseFirestore.instance.collection('groups').doc(groupParent).update({
+      "members": membersParentList,
+      });
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(parentUID)
+        .collection('groups')
+        .doc(groupDefault)
+        .set({"name": 'Default', "id": groupDefault});
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(parentUID)
+        .collection('groups')
+        .doc(groupParent)
+        .set({"name": 'Default', "id": groupParent});
       
       app.delete();
   }

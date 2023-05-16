@@ -121,7 +121,9 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
                     onTap: () => onRemoveMembers(index),
                     leading: Icon(Icons.account_circle),
                     title: Text(membersList[index]['first name']),
-                    subtitle: Text(membersList[index]['email']),
+                    subtitle: Text(membersList[index]['email'],
+                              style: TextStyle(
+                                fontSize: size.width / 22,),),
                     trailing: Icon(Icons.close),
                   );
                 },
@@ -167,7 +169,9 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
                     onTap: onResultTap,
                     leading: Icon(Icons.account_box),
                     title: Text(userMap!['first name']),
-                    subtitle: Text(userMap!['email']),
+                    subtitle: Text(userMap!['email'],
+                              style: TextStyle(
+                                fontSize: size.width / 22,),),
                     trailing: Icon(Icons.add),
                   )
                 : SizedBox(),

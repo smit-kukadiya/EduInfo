@@ -122,7 +122,7 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
                 ? ListTile(
                     onTap: onAddMembers,
                     leading: Icon(Icons.account_box),
-                    title: Text(userMap!['name']),
+                    title: Text(userMap!['role']),
                     subtitle: Text(userMap!['email']),
                     trailing: Icon(Icons.add),
                   )
