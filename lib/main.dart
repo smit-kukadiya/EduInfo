@@ -1,5 +1,6 @@
 import 'package:EduInfo/auth/main_page.dart';
 import 'package:EduInfo/screens/splash_screen/splash_screen.dart';
+import 'package:get/get.dart';
 
 import 'routes.dart';
 //import 'screens/splash_screen/splash_screen.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     //context, orientation, device
     //it always requires, see plugin documentation
     return Sizer(builder: (context, orientation, device){
-      return MaterialApp(
+      return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'EduInfo',
         theme: CustomTheme().baseTheme,

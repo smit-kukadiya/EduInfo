@@ -62,7 +62,9 @@ class FeeDetailRow extends StatelessWidget {
                 fontWeight: FontWeight.w900,
               ),
         ),
-        Text(statusValue, style: Theme.of(context).textTheme.caption),
+        Text(statusValue, style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                fontWeight: FontWeight.w900,
+              ),),
       ],
     );
   }

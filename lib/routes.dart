@@ -6,6 +6,7 @@ import 'package:EduInfo/screens/add_student/add_student.dart';
 import 'package:EduInfo/screens/add_student/widget/add_student_widget.dart';
 import 'package:EduInfo/screens/contact_screen/contact%20screen.dart';
 import 'package:EduInfo/screens/events_screen/add_events_screen.dart';
+import 'package:EduInfo/screens/fee_screen/fee_insert.dart';
 import 'package:EduInfo/screens/fees_detail_screen/fees_detail_screen.dart';
 import 'package:EduInfo/screens/fees_detail_screen/fees_detail_setting.dart';
 import 'package:EduInfo/screens/my_profile/my_profile_setting/my_profile_setting.dart';
@@ -59,4 +60,5 @@ Map<String, WidgetBuilder> routes = {
   GroupChatHomeScreen.routeName: (context) => GroupChatHomeScreen(),
   FeesDetailScreen.routeName: (context) => FeesDetailScreen(),
   FeesDetailSetting.routeName: (context) => FeesDetailSetting(),
+  FeeInsertScreen.routeName: (context) => FeeInsertScreen(),
 };

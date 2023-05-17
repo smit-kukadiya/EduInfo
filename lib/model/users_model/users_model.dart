@@ -6,6 +6,8 @@ class UsersModel {
   String? uid;
   String? tuid;
   String? image;
+  String? paymentImage;
+  String? paymentStatus;
   int? mobile;
   String? birthDate;
   String? groupDefault;
@@ -15,7 +17,7 @@ class UsersModel {
   String? ifscCode;
   String? recipientName;
 
-  UsersModel({this.firstName, this.lastName, this.email, this.uid, this.wrole, this.image, this.mobile, this.birthDate, this.tuid, this.groupDefault, this.groupStudent, this.groupParent, this.accountNo, this.ifscCode, this.recipientName});
+  UsersModel({this.firstName, this.lastName, this.email, this.uid, this.wrole, this.image, this.mobile, this.birthDate, this.tuid, this.groupDefault, this.groupStudent, this.groupParent, this.accountNo, this.ifscCode, this.recipientName, this.paymentImage, this.paymentStatus});
 
   UsersModel.fromJson(Map<String, dynamic> json) {
     firstName = json['first name'];
@@ -24,6 +26,8 @@ class UsersModel {
     wrole = json['role'];
     uid = json['uid'];
     image = json['image'];
+    paymentImage = json['payment image'];
+    paymentStatus = json['payment status'];
     mobile = json['mobile'];
     birthDate = json['birth date'];
     tuid = json['tuid'];

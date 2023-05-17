@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:EduInfo/screens/home_screen/home_screen.dart';
+import 'package:EduInfo/auth/main_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
@@ -94,7 +94,7 @@ class AuthController extends GetxController {
       isProfileUploading(false);
       //isLoading = false;
 
-      Get.to(() => const HomeScreen());
+      Get.to(() => const MainPage());
     });
   }
 
@@ -110,8 +110,27 @@ class AuthController extends GetxController {
       'recipient name': recipientName,
     },SetOptions(merge: true)).then((value) {
       isPaymentUploading(false);
+          Get.to(() => MainPage());
+    });
+  }
 
-      Get.to(() => const HomeScreen());
+  storePaymentImage(
+    File? selectedImage,
+    {
+      String url = '',
+    }
+    ) async {
+    String url_new = url;
+    if (selectedImage != null) {
+      url_new = await uploadImage(selectedImage);
+    }
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    FirebaseFirestore.instance.collection('users').doc(uid).set({
+      'payment image': url_new,
+      'payment status': 'pending',
+    },SetOptions(merge: true)).then((value) {
+      isPaymentUploading(false);
+          Get.to(() => MainPage());
     });
   }
 

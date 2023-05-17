@@ -1,20 +1,47 @@
+import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:EduInfo/constants.dart';
+import 'package:EduInfo/screens/fee_screen/fee_insert.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'data/fee_data.dart';
 import 'widgets/fee_widgets.dart';
 
 class FeeScreen extends StatelessWidget {
-  const FeeScreen({Key? key}) : super(key: key);
+  FeeScreen({Key? key}) : super(key: key);
   static String routeName = 'FeeScreen';
+
+  AuthController authController = Get.put(AuthController());
+
+  Query getData(){
+    return FirebaseFirestore.instance.collection('users')
+      .where("uid", isEqualTo: authController.myUser.value.tuid.toString())
+      .where('role', isEqualTo: 'teacher');
+  }
+
+  Stream<QuerySnapshot> get flashCardWords {
+    return getData().snapshots();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fee', style: TextStyle(color: kTextWhiteColor),),
+        title: Text('Pay Fee', style: TextStyle(color: kTextWhiteColor),),
       ),
-      body: Column(
+      body: StreamBuilder(
+        stream: flashCardWords,
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text("something is wrong");
+          }
+          else if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+      return Column(
         children: [
           Expanded(
             child: Container(
@@ -25,7 +52,7 @@ class FeeScreen extends StatelessWidget {
               child: ListView.builder(
                   physics: BouncingScrollPhysics(),
                   padding: EdgeInsets.all(kDefaultPadding),
-                  itemCount: fee.length,
+                  itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, int index) {
                     return Container(
                       margin: EdgeInsets.only(bottom: kDefaultPadding),
@@ -58,18 +85,18 @@ class FeeScreen extends StatelessWidget {
                                 //   ),
                                 // ),
                                 FeeDetailRow(
-                                  title: 'Semester',
-                                  statusValue: fee[index].month,
+                                  title: 'Account No.',
+                                  statusValue: snapshot.data!.docChanges[index].doc['account no'],
                                 ),
                                 sizedBox,
                                 FeeDetailRow(
-                                  title: 'Payment Last Date',
-                                  statusValue: fee[index].date,
+                                  title: 'IFSC Code',
+                                  statusValue: snapshot.data!.docChanges[index].doc['ifsc code'],
                                 ),
                                 sizedBox,
                                 FeeDetailRow(
-                                  title: 'Status',
-                                  statusValue: fee[index].paymentStatus,
+                                  title: 'Recipient name',
+                                  statusValue: snapshot.data!.docChanges[index].doc['recipient name'],
                                 ),
                                 sizedBox,
                                 SizedBox(
@@ -78,19 +105,27 @@ class FeeScreen extends StatelessWidget {
                                     thickness: 1.0,
                                   ),
                                 ),
-                                FeeDetailRow(
-                                  title: 'Total Amount',
-                                  statusValue: fee[index].totalAmount,
-                                ),
+                                // FeeDetailRow(
+                                //   title: 'Total Amount',
+                                //   statusValue: fee[index].totalAmount,
+                                // ),
                               ],
                             ),
                           ),
                           FeeButton(
-                              title: fee[index].btnStatus,
-                              iconData: fee[index].btnStatus == 'COMPLETE'
-                                  ? Icons.done
-                                  : Icons.arrow_forward_outlined,
-                              onPress: () {})
+                              title: 'Pay',
+                              iconData: 
+                                authController.myUser.value.paymentStatus == 'pending'
+                                    ? Icons.done
+                                    : 
+                                      Icons.arrow_forward_outlined,
+                              onPress: () {
+                                authController.myUser.value.paymentStatus == 'pending'
+                                    ? null
+                                    : 
+                                       Navigator.pushNamed(context, FeeInsertScreen.routeName);
+                                     
+                                   })
                         ],
                       ),
                     );
@@ -98,6 +133,8 @@ class FeeScreen extends StatelessWidget {
             ),
           ),
         ],
+      );
+        }
       ),
     );
   }
