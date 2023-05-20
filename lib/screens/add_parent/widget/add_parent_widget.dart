@@ -41,7 +41,8 @@ class AddParentUsers extends StatelessWidget {
         'role': 'parent',
         'tuid': teacher,
         'uid': parentUID,
-        'first name': ''
+        'first name': '',
+        'payment status': "",
       });
 
       await FirebaseFirestore.instance.collection('users').doc(teacher).update({

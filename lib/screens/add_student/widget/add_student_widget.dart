@@ -48,7 +48,8 @@ class AddStudentUsers extends StatelessWidget {
         'role': 'student',
         'tuid': teacher,
         'uid': studentUID,
-        'first name': ''
+        'first name': '',
+        'payment status': "",
       });
 
       membersDefaultList.add({

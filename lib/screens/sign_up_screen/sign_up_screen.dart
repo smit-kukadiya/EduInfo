@@ -128,6 +128,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       'group student': groupStudentId,
       'group parent': groupParentId,
       'uid': FirebaseAuth.instance.currentUser?.uid.toString(),
+      'account no': "",
+      'ifsc code': "",
+      'recipient name': "",
     });
     await FirebaseFirestore.instance.collection('groups').doc(groupDefaultId).set({
       "id": groupDefaultId,
