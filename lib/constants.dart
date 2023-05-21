@@ -54,3 +54,37 @@ const String mobilePattern = r'(^(?:[+0]9)?[0-9]{10}$)';
 //validation for email
 const String emailPattern =
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
+String capitalize(String value) {
+  var result = value[0].toUpperCase();
+  bool cap = true;
+  for (int i = 1; i < value.length; i++) {
+      if (value[i - 1] == " " && cap == true) {
+        result = result + value[i].toUpperCase();
+      } else {
+            result = result + value[i];
+            cap = false;
+      }
+  }
+  return result;
+}
+
+class ShowImage extends StatelessWidget {
+  final String imageUrl;
+
+  const ShowImage({required this.imageUrl, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      body: Container(
+        height: size.height,
+        width: size.width,
+        color: Colors.black,
+        child: Image.network(imageUrl),
+      ),
+    );
+  }
+}

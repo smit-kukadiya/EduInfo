@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:EduInfo/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -38,6 +39,7 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
 
   Future uploadImage() async {
     final postID = DateTime.now().millisecondsSinceEpoch.toString();
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     Reference ref = FirebaseStorage.instance
         .ref()
         .child('teachers')
@@ -46,6 +48,18 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
         .child("post_$postID");
     await ref.putFile(selectedImage!);
     downloadURL = await ref.getDownloadURL();
+
+    await firebaseFirestore
+        .collection("users")
+        .doc(authController.myUser.value.uid)
+        .collection("images")
+      .doc(postID).set({
+        "postID": postID,
+        "postURL": downloadURL,
+        "postTime": DateTime.now(),
+        "postType": widget.screenName,
+      }).whenComplete(() =>
+          showSnackBar("Image Uploaded Successfully", Duration(seconds: 2)));
   }
 
   showSnackBar(String snackText, Duration d) {
@@ -112,10 +126,7 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
                                     ElevatedButton(
                                         onPressed: () {
                                           if (selectedImage != null) {
-                                            uploadImage().whenComplete(() =>
-                                                showSnackBar(
-                                                    "Image Uploaded Successfully",
-                                                    Duration(seconds: 2)));
+                                            uploadImage();
                                           } else {
                                             showSnackBar("No image selected",
                                                 Duration(seconds: 2));

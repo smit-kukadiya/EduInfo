@@ -6,6 +6,7 @@ import 'package:EduInfo/screens/assignment_screen/announcement_demo_screen.dart'
 import 'package:EduInfo/screens/assignment_screen/announcement_screen.dart';
 import 'package:EduInfo/screens/contact_screen/contact%20screen.dart';
 import 'package:EduInfo/screens/fees_detail_screen/fees_detail_screen.dart';
+import 'package:EduInfo/screens/show_image/show_image_screen.dart';
 import 'package:EduInfo/screens/teacher_screen/teacher_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -204,10 +205,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
-                          onPress: () {
-                            Navigator.pushNamed(
-                                context, CollegeCalScreen.routeName);
-                          },
+                          onPress: 
+                            () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => showImageScreen(
+                        screenName: 'academic',
+                      ),
+                    ),
+                  ),
                           icon: 'assets/icons/holiday.svg',
                           title: 'Academic Calendar',
                         ),
@@ -221,10 +226,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           title: 'Contact Teacher',
                         ) :
                         HomeCard(
-                          onPress: () {
-                            Navigator.pushNamed(
-                                context, TimeTableScreen.routeName);
-                          },
+                          onPress: 
+                            () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => showImageScreen(
+                        screenName: 'timetable',
+                      ),
+                    ),
+                  ),
                           icon: 'assets/icons/timetable.svg',
                           title: 'Time Table',
                         ), ),
@@ -234,18 +243,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
-                          onPress: () {
-                            Navigator.pushNamed(
-                                context, ResultScreen.routeName);
-                          },
+                          onPress: 
+                            () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => showImageScreen(
+                        screenName: 'result',
+                      ),
+                    ),
+                  ),
                           icon: 'assets/icons/result.svg',
                           title: 'Result',
                         ),
                         HomeCard(
-                          onPress: () {
-                            Navigator.pushNamed(
-                                context, GalleryScreen.routeName);
-                          },
+                          onPress: 
+                            () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => showImageScreen(
+                        screenName: 'gallery',
+                      ),
+                    ),
+                  ),
                           icon: 'assets/icons/gallery.svg',
                           title: 'Gallery',
                         ),

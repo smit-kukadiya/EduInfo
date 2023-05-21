@@ -12,21 +12,31 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
-class AddStudentUsers extends StatelessWidget {
+class AddStudentUsers extends StatefulWidget {
   AddStudentUsers({Key? key}) : super(key: key);
   static String routeName = 'AddStudentUsers';
 
+  @override
+  State<AddStudentUsers> createState() => _AddStudentUsersState();
+}
+
+class _AddStudentUsersState extends State<AddStudentUsers> {
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
   List membersDefaultList = [];
+
   List membersStudentList = [];
+
   AuthController authController = Get.put(AuthController());
 
   late FirebaseAuth mAuth1;
-  
+
   final _formKey = GlobalKey<FormState>();
-  
+
   final teacher = FirebaseAuth.instance.currentUser!.uid.toString();
+
   late String? studentUID;
 
   Future addingStudent() async{
@@ -50,6 +60,7 @@ class AddStudentUsers extends StatelessWidget {
         'uid': studentUID,
         'first name': '',
         'payment status': "",
+        'payment image': '',
       });
 
       membersDefaultList.add({
@@ -94,7 +105,16 @@ class AddStudentUsers extends StatelessWidget {
         .doc(groupStudent)
         .set({"name": 'Students', "id": groupStudent});
     
-      app.delete();
+      app.delete().whenComplete(() =>
+          showSnackBar("Student added", Duration(seconds: 2)));
+  }
+
+  showSnackBar(String snackText, Duration d) {
+    final snackBar = SnackBar(
+      content: Text(snackText),
+      duration: d,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -126,8 +146,6 @@ class AddStudentUsers extends StatelessWidget {
                           onPress: () {
                             if (_formKey.currentState!.validate()) {
                               addingStudent();
-                              Navigator.pushNamed(
-                                context, MainPage.routeName);
                             }
                           },
                           title: 'INSERT',
@@ -179,19 +197,6 @@ class AddStudentUsers extends StatelessWidget {
       decoration: InputDecoration(
         labelText: 'Password',
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        // suffixIcon: IconButton(
-        //   onPressed: () {
-        //     setState(() {
-        //       _passwordVisible = !_passwordVisible;
-        //     });
-        //   },
-        //   icon: Icon(
-        //     _passwordVisible
-        //         ? Icons.visibility_off_outlined
-        //         : Icons.visibility_off_outlined,
-        //   ),
-        //   iconSize: kDefaultPadding,
-        // ),
       ),
       validator: (value) {
         if (value!.length < 8) {
@@ -200,5 +205,4 @@ class AddStudentUsers extends StatelessWidget {
       },
     );
   }
-
 }

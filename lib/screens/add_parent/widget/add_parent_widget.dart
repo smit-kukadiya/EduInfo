@@ -12,21 +12,31 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
-class AddParentUsers extends StatelessWidget {
+class AddParentUsers extends StatefulWidget {
   AddParentUsers({Key? key}) : super(key: key);
   static String routeName = 'AddParentUsers';
 
+  @override
+  State<AddParentUsers> createState() => _AddParentUsersState();
+}
+
+class _AddParentUsersState extends State<AddParentUsers> {
   TextEditingController _emailController = TextEditingController();
+
   TextEditingController _passwordController = TextEditingController();
+
   List membersDefaultList = [];
+
   List membersParentList = [];
+
   AuthController authController = Get.put(AuthController());
 
   late FirebaseAuth mAuth1;
-  
+
   final _formKey = GlobalKey<FormState>();
-  
+
   final teacher = FirebaseAuth.instance.currentUser!.uid.toString();
+
   String? parentUID;
 
   Future addingParent() async {
@@ -197,5 +207,4 @@ class AddParentUsers extends StatelessWidget {
       },
     );
   }
-
 }
