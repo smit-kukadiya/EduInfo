@@ -68,7 +68,7 @@ class _showImageScreenState extends State<showImageScreen> {
                           maxScale: PhotoViewComputedScale.covered * 2,
                         );
                       },
-                      scrollPhysics: BouncingScrollPhysics(),
+                      scrollPhysics: const BouncingScrollPhysics(),
                       backgroundDecoration: BoxDecoration(
                         color: kOtherColor,
                       ),

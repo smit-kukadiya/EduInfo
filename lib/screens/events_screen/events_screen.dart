@@ -1,5 +1,6 @@
 import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:EduInfo/screens/events_screen/add_events_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import '../../constants.dart';
 import 'data/events_data.dart';
@@ -9,10 +10,15 @@ import 'widgets/events_widgets.dart';
 
 
 
-class EventsScreen extends StatelessWidget {
+class EventsScreen extends StatefulWidget {
   EventsScreen({Key? key}) : super(key: key);
   static String routeName = 'EventsScreen';
 
+  @override
+  State<EventsScreen> createState() => _EventsScreenState();
+}
+
+class _EventsScreenState extends State<EventsScreen> {
   AuthController authController = Get.put(AuthController());
 
   @override
@@ -35,9 +41,29 @@ class EventsScreen extends StatelessWidget {
                 color: kOtherColor,
                 borderRadius: kTopBorderRadius,
               ),
-              child: ListView.builder(
+              child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection("users")
+                      .doc(authController.myUser.value.tuid ?? authController.myUser.value.uid)
+                      .collection("events")
+                      .snapshots(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text("something is wrong");
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (snapshot.data!.docs.isEmpty) {
+                      return Center(
+                        child: Text("No Images"),
+                      );
+                    }
+              return ListView.builder(
                   padding: EdgeInsets.all(kDefaultPadding),
-                  itemCount: assignment.length,
+                  itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, int index) {
                     return Container(
                       margin: EdgeInsets.only(bottom: kDefaultPadding),
@@ -70,14 +96,14 @@ class EventsScreen extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      assignment[index].subjectName,
+                                      snapshot.data!.docs[index]['eventType'],
                                       style: Theme.of(context).textTheme.caption,
                                     ),
                                   ),
                                 ),
                                 kHalfSizedBox,
                                 Text(
-                                  assignment[index].topicName,
+                                  snapshot.data!.docs[index]['eventName'],
                                   style: Theme.of(context).textTheme.subtitle2!.copyWith(
                                     color: kTextBlackColor,
                                     fontWeight: FontWeight.w900,
@@ -86,7 +112,7 @@ class EventsScreen extends StatelessWidget {
                                 kHalfSizedBox,
                                 EventsDetailRow(
                                   title: 'Date',
-                                  statusValue: assignment[index].assignDate,
+                                  statusValue: snapshot.data!.docs[index]['eventDate'],
                                 ),
                                 // kHalfSizedBox,
                                 // EventsDetailRow(
@@ -96,7 +122,7 @@ class EventsScreen extends StatelessWidget {
                                 kHalfSizedBox,
                                 EventsDetailRow(
                                   title: 'Status',
-                                  statusValue: assignment[index].status,
+                                  statusValue: snapshot.data!.docs[index]['eventStatus'],
                                 ),
                                 kHalfSizedBox,
                                 //use condition here to display button
@@ -114,7 +140,8 @@ class EventsScreen extends StatelessWidget {
                         ],
                       ),
                     );
-                  }),
+                  });
+                      }),
             ),
           ),
         ],

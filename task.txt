@@ -1,3 +1,4 @@
-Payment fees section where teacher can see image of screenshot of payment
-Contact detail for student and parent
-Event Section to connect database and redirect data
+Contact detail for student
+Student and parent section has error when accept or decline payment range error
+add delete button for delete account for teacher student parent
+event screen need to delete event by button

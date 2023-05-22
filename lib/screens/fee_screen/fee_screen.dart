@@ -115,12 +115,12 @@ class FeeScreen extends StatelessWidget {
                           FeeButton(
                               title: 'Pay',
                               iconData: 
-                                authController.myUser.value.paymentStatus == 'pending'
+                                authController.myUser.value.paymentStatus == 'submitted'
                                     ? Icons.done
                                     : 
                                       Icons.arrow_forward_outlined,
                               onPress: () {
-                                authController.myUser.value.paymentStatus == 'pending'
+                                authController.myUser.value.paymentStatus == 'submitted'
                                     ? null
                                     : 
                                        Navigator.pushNamed(context, FeeInsertScreen.routeName);

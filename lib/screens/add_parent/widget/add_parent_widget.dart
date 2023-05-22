@@ -53,6 +53,7 @@ class _AddParentUsersState extends State<AddParentUsers> {
         'uid': parentUID,
         'first name': '',
         'payment status': "",
+        'payment image': '',
       });
 
       await FirebaseFirestore.instance.collection('users').doc(teacher).update({

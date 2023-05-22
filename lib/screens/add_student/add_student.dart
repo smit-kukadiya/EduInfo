@@ -1,6 +1,6 @@
+import 'package:EduInfo/auth/main_page.dart';
 import 'package:EduInfo/constants.dart';
 import 'package:EduInfo/screens/add_student/widget/add_student_widget.dart';
-import 'package:EduInfo/screens/home_screen/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,15 +18,18 @@ class AddStudent extends StatefulWidget {
 class _AddStudentState extends State<AddStudent> {
   final teacher = FirebaseAuth.instance.currentUser!.uid.toString();
 
-  Query getData() {
-    return FirebaseFirestore.instance
+  // Query getData() {
+  //   return FirebaseFirestore.instance
+  //       .collection('users')
+  //       .where("tuid", isEqualTo: teacher)
+  //       .where('role', isEqualTo: 'student');
+  // }
+
+  Stream<QuerySnapshot> flashCardWords() async* {
+    yield* FirebaseFirestore.instance
         .collection('users')
         .where("tuid", isEqualTo: teacher)
-        .where('role', isEqualTo: 'student');
-  }
-
-  Stream<QuerySnapshot> get flashCardWords {
-    return getData().snapshots();
+        .where('role', isEqualTo: 'student').snapshots();
   }
 
   showSnackBar(String snackText, Duration d) {
@@ -35,6 +38,20 @@ class _AddStudentState extends State<AddStudent> {
       duration: d,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  Future acceptPayment(String uid) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update({'payment status': 'paid'});
+  }
+
+  Future rejectPayment(String uid) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update({'payment status': 'rejected'});
   }
 
   @override
@@ -46,8 +63,8 @@ class _AddStudentState extends State<AddStudent> {
           style: TextStyle(color: kTextWhiteColor),
         ),
       ),
-      body: StreamBuilder(
-        stream: flashCardWords,
+      body: StreamBuilder<QuerySnapshot>(
+        stream: flashCardWords(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return const Text("something is wrong");
@@ -68,25 +85,33 @@ class _AddStudentState extends State<AddStudent> {
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, int index) {
                   return Slidable(
-                    startActionPane:
-                        ActionPane(motion: const BehindMotion(), children: [
-                      SlidableAction(
-                        onPressed: (context) => {},
-                        label: 'Delete',
-                        icon: Icons.delete,
-                        backgroundColor: Colors.red,
-                      ),
-                    ]),
+                    // startActionPane:
+                    //     ActionPane(motion: const BehindMotion(), children: [
+                    //   SlidableAction(
+                    //     onPressed: (context) => {},
+                    //     label: 'Delete',
+                    //     icon: Icons.delete,
+                    //     backgroundColor: Colors.red,
+                    //   ),
+                    // ]),
                     endActionPane:
                         ActionPane(motion: const DrawerMotion(), children: [
                       SlidableAction(
-                        onPressed: (context) => {},
+                        onPressed: (context) => {
+                          acceptPayment(
+                              snapshot.data!.docChanges[index].doc['uid']),
+                          Navigator.pushNamed(context, MainPage.routeName)
+                        },
                         label: 'Accept',
                         icon: Icons.check,
                         backgroundColor: Colors.green,
                       ),
                       SlidableAction(
-                        onPressed: (context) => {},
+                        onPressed: (context) => {
+                          rejectPayment(
+                              snapshot.data!.docChanges[index].doc['uid']),
+                          Navigator.pushNamed(context, MainPage.routeName)
+                        },
                         label: 'Reject',
                         icon: Icons.close,
                         backgroundColor: Colors.red,
@@ -127,6 +152,25 @@ class _AddStudentState extends State<AddStudent> {
                                           ),
                                         ),
                                       ),
+                                      if (snapshot.data!.docChanges[index]
+                                              .doc['payment status'] ==
+                                          'paid')
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                                Icons.check_circle_outline))
+                                      else if (snapshot.data!.docChanges[index]
+                                              .doc['payment status'] ==
+                                          'rejected')
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.close_outlined))
+                                      else if (snapshot.data!.docChanges[index]
+                                              .doc['payment status'] ==
+                                          'submitted')
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.circle_outlined)),
                                       IconButton(
                                         onPressed: () {
                                           if (snapshot.data!.docChanges[index]
@@ -142,10 +186,9 @@ class _AddStudentState extends State<AddStudent> {
                                                 ),
                                               ),
                                             );
-                                          }
-                                          else {
-                                            showSnackBar(
-                                                'No Payment Image', Duration(seconds: 2));
+                                          } else {
+                                            showSnackBar('No Payment Image',
+                                                Duration(seconds: 2));
                                           }
                                         },
                                         icon: Icon(Icons.image),

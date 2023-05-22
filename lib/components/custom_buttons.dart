@@ -1,4 +1,4 @@
-import '../constants.dart';
+import 'package:EduInfo/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 

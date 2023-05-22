@@ -127,7 +127,7 @@ class AuthController extends GetxController {
     String uid = FirebaseAuth.instance.currentUser!.uid;
     FirebaseFirestore.instance.collection('users').doc(uid).set({
       'payment image': url_new,
-      'payment status': 'pending',
+      'payment status': 'submitted',
     },SetOptions(merge: true)).then((value) {
       isPaymentUploading(false);
           Get.to(() => MainPage());

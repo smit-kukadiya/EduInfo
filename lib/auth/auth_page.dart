@@ -1,7 +1,7 @@
 import 'package:EduInfo/screens/login_screen/login_screen.dart';
+import 'package:EduInfo/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/sign_up_screen/sign_up_screen.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);

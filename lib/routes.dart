@@ -1,5 +1,3 @@
-//import 'package:EduInfo/auth/main_page.dart';
-//import 'package:EduInfo/screens/login_screen/login_screen.dart';
 import 'package:EduInfo/screens/add_parent/add_parent.dart';
 import 'package:EduInfo/screens/add_parent/widget/add_parent_widget.dart';
 import 'package:EduInfo/screens/add_student/add_student.dart';
