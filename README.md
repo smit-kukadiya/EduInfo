@@ -15,5 +15,5 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-## Templete for Frontend
+## Templete for Frontend UI
 https://github.com/alixumer/brain_school_complete.git
