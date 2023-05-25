@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\Other\\EduInfo\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
             "map": [
+                {
+                    "source": "D:\\Other\\EduInfo\\build\\app\\generated\\res\\google-services\\release\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,198,279,383,491,611,706",
+                        "endColumns": "142,80,103,107,119,94,71",
+                        "endOffsets": "193,274,378,486,606,701,773"
+                    },
+                    "to": {
+                        "startLines": "127,131,132,133,134,135,136",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "9016,9374,9455,9559,9667,9787,9882",
+                        "endColumns": "142,80,103,107,119,94,71",
+                        "endOffsets": "9154,9450,9554,9662,9782,9877,9949"
+                    }
+                },
                 {
                     "source": "C:\\Users\\smitk\\.gradle\\caches\\transforms-3\\542a859793ec57d6a4d40865c7efc6d9\\transformed\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
                     "from": {
@@ -20,25 +37,6 @@
                         "endLines": "7,8,9,10,86,169,173,325,342,350",
                         "endColumns": "11,59,51,44,59,24,24,24,24,24",
                         "endOffsets": "339,399,451,496,5500,12009,12206,17427,18541,18934"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,17",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,1021",
-                        "endLines": "10,19",
-                        "endColumns": "12,12",
-                        "endOffsets": "674,1185"
-                    },
-                    "to": {
-                        "startLines": "138,146",
-                        "startColumns": "4,4",
-                        "startOffsets": "10025,10530",
-                        "endLines": "145,148",
-                        "endColumns": "12,12",
-                        "endOffsets": "10525,10694"
                     }
                 },
                 {
@@ -95,20 +93,22 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\smitk\\Development\\projects\\EduInfo\\build\\app\\generated\\res\\google-services\\release\\values\\values.xml",
+                    "source": "D:\\Other\\EduInfo\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,198,279,383,491,611,706",
-                        "endColumns": "142,80,103,107,119,94,71",
-                        "endOffsets": "193,274,378,486,606,701,773"
+                        "startLines": "3,17",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,1021",
+                        "endLines": "10,19",
+                        "endColumns": "12,12",
+                        "endOffsets": "674,1185"
                     },
                     "to": {
-                        "startLines": "127,131,132,133,134,135,136",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "9016,9374,9455,9559,9667,9787,9882",
-                        "endColumns": "142,80,103,107,119,94,71",
-                        "endOffsets": "9154,9450,9554,9662,9782,9877,9949"
+                        "startLines": "138,146",
+                        "startColumns": "4,4",
+                        "startOffsets": "10025,10530",
+                        "endLines": "145,148",
+                        "endColumns": "12,12",
+                        "endOffsets": "10525,10694"
                     }
                 },
                 {

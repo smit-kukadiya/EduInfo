@@ -25,12 +25,13 @@ class _AddStudentState extends State<AddStudent> {
   //       .where('role', isEqualTo: 'student');
   // }
 
-  Stream<QuerySnapshot> flashCardWords() async* {
-    yield* FirebaseFirestore.instance
-        .collection('users')
-        .where("tuid", isEqualTo: teacher)
-        .where('role', isEqualTo: 'student').snapshots();
-  }
+  // Stream<QuerySnapshot> flashCardWords() async* {
+  //   yield* FirebaseFirestore.instance
+  //       .collection('users')
+  //       .where("tuid", isEqualTo: teacher)
+  //       .where('role', isEqualTo: 'student')
+  //       .snapshots();
+  // }
 
   showSnackBar(String snackText, Duration d) {
     final snackBar = SnackBar(
@@ -63,15 +64,22 @@ class _AddStudentState extends State<AddStudent> {
           style: TextStyle(color: kTextWhiteColor),
         ),
       ),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: flashCardWords(),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection('users')
+            .where("tuid", isEqualTo: teacher)
+            .where('role', isEqualTo: 'student')
+            .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return const Text("something is wrong");
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.data!.docs.isEmpty) {
+            return Center(
+              child: Text("No Students"),
             );
           }
 
@@ -100,7 +108,7 @@ class _AddStudentState extends State<AddStudent> {
                         onPressed: (context) => {
                           acceptPayment(
                               snapshot.data!.docChanges[index].doc['uid']),
-                          Navigator.pushNamed(context, MainPage.routeName)
+                          Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false)
                         },
                         label: 'Accept',
                         icon: Icons.check,
@@ -110,7 +118,7 @@ class _AddStudentState extends State<AddStudent> {
                         onPressed: (context) => {
                           rejectPayment(
                               snapshot.data!.docChanges[index].doc['uid']),
-                          Navigator.pushNamed(context, MainPage.routeName)
+                          Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false)
                         },
                         label: 'Reject',
                         icon: Icons.close,

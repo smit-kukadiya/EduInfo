@@ -56,7 +56,7 @@ class _CreateGroupState extends State<CreateGroup> {
       "type": "notify",
     });
 
-    Navigator.pushNamed(context, MainPage.routeName);
+    Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false);
   }
 
   @override

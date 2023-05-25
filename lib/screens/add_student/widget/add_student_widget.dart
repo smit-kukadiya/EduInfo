@@ -4,7 +4,6 @@ import 'package:EduInfo/auth/main_page.dart';
 import 'package:EduInfo/components/custom_buttons.dart';
 import 'package:EduInfo/constants.dart';
 import 'package:EduInfo/screens/add_student/add_student.dart';
-import 'package:EduInfo/screens/home_screen/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,8 +11,11 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
+
 class AddStudentUsers extends StatefulWidget {
-  AddStudentUsers({Key? key}) : super(key: key);
+  const AddStudentUsers({Key? key}) : super(key: key);
   static String routeName = 'AddStudentUsers';
 
   @override
@@ -104,18 +106,33 @@ class _AddStudentUsersState extends State<AddStudentUsers> {
         .collection('groups')
         .doc(groupStudent)
         .set({"name": 'Students', "id": groupStudent});
+
+    sendMail(_emailController.text.trim());
     
-      app.delete().whenComplete(() =>
-          showSnackBar("Student added", Duration(seconds: 2)));
+      app.delete();
   }
 
-  showSnackBar(String snackText, Duration d) {
-    final snackBar = SnackBar(
-      content: Text(snackText),
-      duration: d,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  sendMail(String email) async {
+    String username = "eduinfo.teamhere4u@gmail.com";
+    String password = 'EducationInformation';
+
+    final smtpServer = gmail(username, password);
+
+    final message = Message()
+      ..from = Address(username, 'EduInfo')
+      ..recipients.add(email)
+      ..subject = 'Welcome to EduInfo'
+      ..text = 'This is the plain text.\nThis is line 2 of the text part.'
+      ..html = "<h1>Welcome to EduInfo</h1>\n<p>This is HTML</p>";
+    
+    try {
+      final sendReport = await send(message, smtpServer);
+      print('Message sent: ' + sendReport.toString());
+    } on MailerException catch (e) {
+      print('Message not sent. \n' + e.toString());
+    }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -146,6 +163,7 @@ class _AddStudentUsersState extends State<AddStudentUsers> {
                           onPress: () {
                             if (_formKey.currentState!.validate()) {
                               addingStudent();
+                              Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false);
                             }
                           },
                           title: 'INSERT',

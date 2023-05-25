@@ -1,11 +1,14 @@
+import 'package:EduInfo/auth/auth_controller.dart';
 import 'package:EduInfo/auth/main_page.dart';
 import 'package:EduInfo/constants.dart';
 import 'package:EduInfo/screens/add_parent/widget/add_parent_widget.dart';
+import 'package:EduInfo/screens/home_screen/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class AddParent extends StatefulWidget {
@@ -18,6 +21,13 @@ class AddParent extends StatefulWidget {
 
 class _AddParentState extends State<AddParent> {
   final teacher = FirebaseAuth.instance.currentUser!.uid.toString();
+  // AuthController authController = Get.put(AuthController());
+
+  // @override
+  // void initState() {
+  //   authController.getUserInfo();
+  //   // super.initState();
+  // }
 
   Query getData() {
     return FirebaseFirestore.instance
@@ -98,7 +108,7 @@ class _AddParentState extends State<AddParent> {
                         onPressed: (context) => {
                           acceptPayment(
                               snapshot.data!.docChanges[index].doc['uid']),
-                          Navigator.pushNamed(context, MainPage.routeName)
+                          Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false)
                         },
                         label: 'Accept',
                         icon: Icons.check,
@@ -108,7 +118,7 @@ class _AddParentState extends State<AddParent> {
                         onPressed: (context) => {
                           rejectPayment(
                               snapshot.data!.docChanges[index].doc['uid']),
-                          Navigator.pushNamed(context, MainPage.routeName)
+                          Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false)
                         },
                         label: 'Reject',
                         icon: Icons.close,

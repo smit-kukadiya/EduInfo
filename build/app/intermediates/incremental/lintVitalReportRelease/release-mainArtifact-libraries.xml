@@ -1,13 +1,13 @@
 <libraries>
   <library
-      name="__local_aars__:C:\Users\smitk\Development\projects\EduInfo\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
-      jars="C:\Users\smitk\Development\projects\EduInfo\build\app\intermediates\flutter\release\libs.jar"
-      resolved="__local_aars__:C:\Users\smitk\Development\projects\EduInfo\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
+      name="__local_aars__:D:\Other\EduInfo\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
+      jars="D:\Other\EduInfo\build\app\intermediates\flutter\release\libs.jar"
+      resolved="__local_aars__:D:\Other\EduInfo\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
   <library
-      name="C:\Users\smitk\Development\projects\EduInfo\android@@:firebase_auth::release"
-      jars="C:\Users\smitk\Development\projects\EduInfo\build\firebase_auth\.transforms\eeedc84baa2cfe3ad0f55386e1969dfe\transformed\out\jars\classes.jar"
+      name="D:\Other\EduInfo\android@@:firebase_auth::release"
+      jars="D:\Other\EduInfo\build\firebase_auth\.transforms\58e2aa11c5d1f17b4a5f787473caa686\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.firebase.auth:firebase_auth:unspecified"
-      folder="C:\Users\smitk\Development\projects\EduInfo\build\firebase_auth\.transforms\eeedc84baa2cfe3ad0f55386e1969dfe\transformed\out"
+      folder="D:\Other\EduInfo\build\firebase_auth\.transforms\58e2aa11c5d1f17b4a5f787473caa686\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -17,10 +17,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="C:\Users\smitk\Development\projects\EduInfo\android@@:firebase_storage::release"
-      jars="C:\Users\smitk\Development\projects\EduInfo\build\firebase_storage\.transforms\316101450f1c3777b99e90ecc40bf96b\transformed\out\jars\classes.jar"
+      name="D:\Other\EduInfo\android@@:firebase_storage::release"
+      jars="D:\Other\EduInfo\build\firebase_storage\.transforms\cdd17acb196e2634ac983c6f0560eec0\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.firebase.storage:firebase_storage:unspecified"
-      folder="C:\Users\smitk\Development\projects\EduInfo\build\firebase_storage\.transforms\316101450f1c3777b99e90ecc40bf96b\transformed\out"
+      folder="D:\Other\EduInfo\build\firebase_storage\.transforms\cdd17acb196e2634ac983c6f0560eec0\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -30,10 +30,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="C:\Users\smitk\Development\projects\EduInfo\android@@:cloud_firestore::release"
-      jars="C:\Users\smitk\Development\projects\EduInfo\build\cloud_firestore\.transforms\8376d8fd87e62a84d4992d04cb1a6400\transformed\out\jars\classes.jar"
+      name="D:\Other\EduInfo\android@@:cloud_firestore::release"
+      jars="D:\Other\EduInfo\build\cloud_firestore\.transforms\e22ec4cecb73ce4eb171ea1397207086\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.firebase.cloudfirestore:cloud_firestore:unspecified"
-      folder="C:\Users\smitk\Development\projects\EduInfo\build\cloud_firestore\.transforms\8376d8fd87e62a84d4992d04cb1a6400\transformed\out"
+      folder="D:\Other\EduInfo\build\cloud_firestore\.transforms\e22ec4cecb73ce4eb171ea1397207086\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -43,10 +43,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="C:\Users\smitk\Development\projects\EduInfo\android@@:firebase_core::release"
-      jars="C:\Users\smitk\Development\projects\EduInfo\build\firebase_core\.transforms\14cb880332070cb7f06901f49143045e\transformed\out\jars\classes.jar"
+      name="D:\Other\EduInfo\android@@:firebase_core::release"
+      jars="D:\Other\EduInfo\build\firebase_core\.transforms\57ca35bb1e0373008901907c2488282c\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.firebase.core:firebase_core:unspecified"
-      folder="C:\Users\smitk\Development\projects\EduInfo\build\firebase_core\.transforms\14cb880332070cb7f06901f49143045e\transformed\out"
+      folder="D:\Other\EduInfo\build\firebase_core\.transforms\57ca35bb1e0373008901907c2488282c\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -56,10 +56,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="C:\Users\smitk\Development\projects\EduInfo\android@@:flutter_plugin_android_lifecycle::release"
-      jars="C:\Users\smitk\Development\projects\EduInfo\build\flutter_plugin_android_lifecycle\.transforms\ff06815ae189ed7ced04ef4e5a5ffa21\transformed\out\jars\classes.jar"
+      name="D:\Other\EduInfo\android@@:flutter_plugin_android_lifecycle::release"
+      jars="D:\Other\EduInfo\build\flutter_plugin_android_lifecycle\.transforms\3ab524967274aa26006b94f0617e7dcd\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.flutter_plugin_android_lifecycle:flutter_plugin_android_lifecycle:unspecified"
-      folder="C:\Users\smitk\Development\projects\EduInfo\build\flutter_plugin_android_lifecycle\.transforms\ff06815ae189ed7ced04ef4e5a5ffa21\transformed\out"
+      folder="D:\Other\EduInfo\build\flutter_plugin_android_lifecycle\.transforms\3ab524967274aa26006b94f0617e7dcd\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -69,10 +69,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="C:\Users\smitk\Development\projects\EduInfo\android@@:path_provider_android::release"
-      jars="C:\Users\smitk\Development\projects\EduInfo\build\path_provider_android\.transforms\71ad11e2a888a6c939dd781313522443\transformed\out\jars\classes.jar"
+      name="D:\Other\EduInfo\android@@:path_provider_android::release"
+      jars="D:\Other\EduInfo\build\path_provider_android\.transforms\9ddbbb85dc4b5f34b0b3ee9be7942ae3\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"
-      folder="C:\Users\smitk\Development\projects\EduInfo\build\path_provider_android\.transforms\71ad11e2a888a6c939dd781313522443\transformed\out"
+      folder="D:\Other\EduInfo\build\path_provider_android\.transforms\9ddbbb85dc4b5f34b0b3ee9be7942ae3\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -82,10 +82,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="C:\Users\smitk\Development\projects\EduInfo\android@@:image_picker_android::release"
-      jars="C:\Users\smitk\Development\projects\EduInfo\build\image_picker_android\.transforms\dbbc0a66e4a6da772a271bc48b2adc56\transformed\out\jars\classes.jar"
+      name="D:\Other\EduInfo\android@@:image_picker_android::release"
+      jars="D:\Other\EduInfo\build\image_picker_android\.transforms\fccae809177e19bf5b702cf9a453cc09\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.imagepicker:image_picker_android:unspecified"
-      folder="C:\Users\smitk\Development\projects\EduInfo\build\image_picker_android\.transforms\dbbc0a66e4a6da772a271bc48b2adc56\transformed\out"
+      folder="D:\Other\EduInfo\build\image_picker_android\.transforms\fccae809177e19bf5b702cf9a453cc09\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

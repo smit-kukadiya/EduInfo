@@ -1,9 +1,8 @@
 import 'package:EduInfo/auth/auth_controller.dart';
+import 'package:EduInfo/constants.dart';
 import 'package:EduInfo/screens/events_screen/add_events_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import '../../constants.dart';
-import 'data/events_data.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'widgets/events_widgets.dart';
@@ -25,6 +24,23 @@ class _EventsScreenState extends State<EventsScreen> {
   void initState() {
     authController.getUserInfo();
     //super.initState();
+  }
+
+  Future deleteEvent(String eventID) async {
+    await FirebaseFirestore.instance
+                    .collection("users")
+                    .doc(authController.myUser.value.uid)
+                    .collection("events")
+                    .doc(eventID)
+                    .delete().whenComplete(() => showSnackBar("Event Deleted Successfully", Duration(seconds: 2)));
+  }
+
+  showSnackBar(String snackText, Duration d) {
+    final snackBar = SnackBar(
+      content: Text(snackText),
+      duration: d,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -58,7 +74,7 @@ class _EventsScreenState extends State<EventsScreen> {
                       );
                     } else if (snapshot.data!.docs.isEmpty) {
                       return Center(
-                        child: Text("No Images"),
+                        child: Text("No Events"),
                       );
                     }
               return ListView.builder(
@@ -86,20 +102,30 @@ class _EventsScreenState extends State<EventsScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  width: 40.w,
-                                  height: 4.h,
-                                  decoration: BoxDecoration(
-                                    color: kSecondaryColor.withOpacity(0.4),
-                                    borderRadius:
-                                        BorderRadius.circular(kDefaultPadding),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      snapshot.data!.docs[index]['eventType'],
-                                      style: Theme.of(context).textTheme.caption,
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Container(
+                                          width: 40.w,
+                                          height: 4.h,
+                                          decoration: BoxDecoration(
+                                            color: kSecondaryColor.withOpacity(0.4),
+                                            borderRadius:
+                                                BorderRadius.circular(kDefaultPadding),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              snapshot.data!.docs[index]['eventType'],
+                                              style: Theme.of(context).textTheme.caption,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    if(authController.myUser.value.wrole == 'teacher') IconButton(onPressed: () {deleteEvent(snapshot.data!.docs[index]['eventID']);}, icon: Icon(Icons.delete), color: kTextLightColor,),
+                                  ],
                                 ),
                                 kHalfSizedBox,
                                 Text(
@@ -114,26 +140,12 @@ class _EventsScreenState extends State<EventsScreen> {
                                   title: 'Date',
                                   statusValue: snapshot.data!.docs[index]['eventDate'],
                                 ),
-                                // kHalfSizedBox,
-                                // EventsDetailRow(
-                                //   title: 'Last Date',
-                                //   statusValue: assignment[index].lastDate,
-                                // ),
                                 kHalfSizedBox,
                                 EventsDetailRow(
                                   title: 'Status',
                                   statusValue: snapshot.data!.docs[index]['eventStatus'],
                                 ),
                                 kHalfSizedBox,
-                                //use condition here to display button
-                                // if (assignment[index].status == 'Pending')
-                                //   //then show button
-                                //   EventsButton(
-                                //     onPress: () {
-                                //       //submit here
-                                //     },
-                                //     title: 'To be Submitted',
-                                //   ),
                               ],
                             ),
                           ),

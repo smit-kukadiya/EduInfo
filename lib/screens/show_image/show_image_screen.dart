@@ -37,43 +37,46 @@ class _showImageScreenState extends State<showImageScreen> {
                 borderRadius: kTopBorderRadius,
                 color: kOtherColor,
               ),
-              child: StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection("users")
-                      .doc(authController.myUser.value.tuid ?? authController.myUser.value.uid)
-                      .collection("images").where("postType", isEqualTo: widget.screenName)
-                      .snapshots(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (snapshot.hasError) {
-                      return Text("something is wrong");
-                    } else if (snapshot.connectionState ==
-                        ConnectionState.waiting) {
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    } else if (snapshot.data!.docs.isEmpty) {
-                      return Center(
-                        child: Text("No Images"),
-                      );
-                    }
-                    return PhotoViewGallery.builder(
-                      itemCount: snapshot.data!.docs.length,
-                      builder: (context, index) {
-                        return PhotoViewGalleryPageOptions(
-                          basePosition: Alignment.center,
-                          imageProvider: NetworkImage(
-                              snapshot.data!.docs[index]['postURL']),
-                          minScale: PhotoViewComputedScale.contained * 0.8,
-                          maxScale: PhotoViewComputedScale.covered * 2,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 18, 0, 10),
+                child: StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection("users")
+                        .doc(authController.myUser.value.tuid ?? authController.myUser.value.uid)
+                        .collection("images").where("postType", isEqualTo: widget.screenName)
+                        .snapshots(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return Text("something is wrong");
+                      } else if (snapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
                         );
-                      },
-                      scrollPhysics: const BouncingScrollPhysics(),
-                      backgroundDecoration: BoxDecoration(
-                        color: kOtherColor,
-                      ),
-                    );
-                  }),
+                      } else if (snapshot.data!.docs.isEmpty) {
+                        return Center(
+                          child: Text("No Images"),
+                        );
+                      }
+                      return PhotoViewGallery.builder(
+                        itemCount: snapshot.data!.docs.length,
+                        builder: (context, index) {
+                          return PhotoViewGalleryPageOptions(
+                            basePosition: Alignment.center,
+                            imageProvider: NetworkImage(
+                                snapshot.data!.docs[index]['postURL']),
+                            minScale: PhotoViewComputedScale.contained * 0.8,
+                            maxScale: PhotoViewComputedScale.covered * 2,
+                          );
+                        },
+                        scrollPhysics: const BouncingScrollPhysics(),
+                        backgroundDecoration: BoxDecoration(
+                          color: kOtherColor,
+                        ),
+                      );
+                    }),
+              ),
             ),
           ),
         ],

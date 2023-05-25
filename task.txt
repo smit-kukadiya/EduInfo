@@ -1,4 +1,6 @@
 Contact detail for student
 Student and parent section has error when accept or decline payment range error
 add delete button for delete account for teacher student parent
-event screen need to delete event by button
+delete icon on show image screen
+assign multiple admin in announcement
+email send when user create by teacher

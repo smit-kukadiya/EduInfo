@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
 class AddParentUsers extends StatefulWidget {
-  AddParentUsers({Key? key}) : super(key: key);
+  const AddParentUsers({Key? key}) : super(key: key);
   static String routeName = 'AddParentUsers';
 
   @override
@@ -134,8 +134,7 @@ class _AddParentUsersState extends State<AddParentUsers> {
                           onPress: () {
                             if (_formKey.currentState!.validate()) {
                               addingParent();
-                              Navigator.pushNamed(
-                                context, MainPage.routeName);
+                              Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false);
                             }
                           },
                           title: 'INSERT',
