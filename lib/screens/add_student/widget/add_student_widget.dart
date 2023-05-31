@@ -99,13 +99,13 @@ class _AddStudentUsersState extends State<AddStudentUsers> {
         .doc(studentUID)
         .collection('groups')
         .doc(groupDefault)
-        .set({"name": 'Default', "id": groupDefault});
+        .set({"name": 'Default', "id": groupDefault, "isMain": true});
     await FirebaseFirestore.instance
         .collection('users')
         .doc(studentUID)
         .collection('groups')
         .doc(groupStudent)
-        .set({"name": 'Students', "id": groupStudent});
+        .set({"name": 'Students', "id": groupStudent, "isMain": true});
 
     sendMail(_emailController.text.trim());
     

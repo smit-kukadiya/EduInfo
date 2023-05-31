@@ -139,6 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
     await FirebaseFirestore.instance.collection('users').doc(uid).collection('groups').doc(groupDefaultId).set({
       "name": "Default",
+      "isMain": true,
       'id':groupDefaultId
     });
     await FirebaseFirestore.instance.collection('groups').doc(groupDefaultId).collection('chats').add({
@@ -152,6 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
     await FirebaseFirestore.instance.collection('users').doc(uid).collection('groups').doc(groupStudentId).set({
       "name": "Students",
+      "isMain": true,
       'id':groupStudentId
     });
     await FirebaseFirestore.instance.collection('groups').doc(groupStudentId).collection('chats').add({
@@ -165,6 +167,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
     await FirebaseFirestore.instance.collection('users').doc(uid).collection('groups').doc(groupParentId).set({
       "name": "Parents",
+      "isMain": true,
       'id':groupParentId
     });
     await FirebaseFirestore.instance.collection('groups').doc(groupParentId).collection('chats').add({

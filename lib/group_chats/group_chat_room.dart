@@ -13,8 +13,9 @@ import 'package:uuid/uuid.dart';
 
 class GroupChatRoom extends StatelessWidget {
   final String groupChatId, groupName;
+  final bool groupIsMain;
 
-  GroupChatRoom({required this.groupName, required this.groupChatId, Key? key})
+  GroupChatRoom({required this.groupName, required this.groupIsMain, required this.groupChatId, Key? key})
       : super(key: key);
 
   final TextEditingController _message = TextEditingController();
@@ -112,6 +113,7 @@ class GroupChatRoom extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (_) => GroupInfo(
                         groupName: groupName,
+                        groupIsMain: groupIsMain,
                         groupId: groupChatId,
                       ),
                     ),
@@ -158,7 +160,7 @@ class GroupChatRoom extends StatelessWidget {
                 },
               ),
             ),
-            Container(
+            if (groupIsMain == true) authController.myUser.value.wrole == 'teacher' ? Container(
               height: size.height / 10,
               width: size.width,
               alignment: Alignment.center,
@@ -189,7 +191,38 @@ class GroupChatRoom extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
+            ) : Container() else Container(
+              height: size.height / 10,
+              width: size.width,
+              alignment: Alignment.center,
+              child: Container(
+                height: size.height / 12,
+                width: size.width / 1.1,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: size.height / 17,
+                      width: size.width / 1.3,
+                      child: TextField(
+                        controller: _message,
+                        decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                              onPressed: () => getImage(),
+                              icon: Icon(Icons.photo),
+                            ),
+                            hintText: "Send Message",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            )),
+                      ),
+                    ),
+                    IconButton(
+                        icon: Icon(Icons.send), onPressed: onSendMessage),
+                  ],
+                ),
+              ),
+            ), 
           ],
         ),
       ),

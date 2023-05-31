@@ -48,6 +48,7 @@ class _CreateGroupState extends State<CreateGroup> {
           .set({
         "name": _groupName.text,
         "id": groupId,
+        "isMain": false,
       });
     }
 

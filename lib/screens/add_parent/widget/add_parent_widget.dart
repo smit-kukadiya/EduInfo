@@ -94,13 +94,13 @@ class _AddParentUsersState extends State<AddParentUsers> {
         .doc(parentUID)
         .collection('groups')
         .doc(groupDefault)
-        .set({"name": 'Default', "id": groupDefault});
+        .set({"name": 'Default', "id": groupDefault, "isMain": true});
     await FirebaseFirestore.instance
         .collection('users')
         .doc(parentUID)
         .collection('groups')
         .doc(groupParent)
-        .set({"name": 'Parents', "id": groupParent});
+        .set({"name": 'Parents', "id": groupParent, "isMain": true});
       
       app.delete();
   }

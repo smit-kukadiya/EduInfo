@@ -77,10 +77,6 @@ class _AddStudentState extends State<AddStudent> {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (snapshot.data!.docs.isEmpty) {
-            return Center(
-              child: Text("No Students"),
-            );
           }
 
           return Container(

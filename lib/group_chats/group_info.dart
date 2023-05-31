@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 
 class GroupInfo extends StatefulWidget {
   final String groupId, groupName;
-  const GroupInfo({required this.groupId, required this.groupName, Key? key})
+  final bool groupIsMain;
+  const GroupInfo({required this.groupId, required this.groupIsMain, required this.groupName, Key? key})
       : super(key: key);
 
   @override
@@ -210,6 +211,7 @@ class _GroupInfoState extends State<GroupInfo> {
                               MaterialPageRoute(
                                 builder: (_) => AddMembersINGroup(
                                   groupChatId: widget.groupId,
+                                  groupIsMain: widget.groupIsMain,
                                   name: widget.groupName,
                                   membersList: membersList,
                                 ),

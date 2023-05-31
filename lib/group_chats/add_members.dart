@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 
 class AddMembersINGroup extends StatefulWidget {
   final String groupChatId, name;
+  final bool groupIsMain;
   final List membersList;
   const AddMembersINGroup(
       {required this.name,
       required this.membersList,
+      required this.groupIsMain,
       required this.groupChatId,
       Key? key})
       : super(key: key);
@@ -72,11 +74,12 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
         .doc(userMap!['uid'])
         .collection('groups')
         .doc(widget.groupChatId)
-        .set({"name": widget.name, "id": widget.groupChatId});
+        .set({"name": widget.name, "id": widget.groupChatId, "isMain": widget.groupIsMain});
 
     Navigator.of(context).push( 
       MaterialPageRoute(
         builder: (_) => GroupInfo(groupName: widget.name,
+                        groupIsMain: widget.groupIsMain,
                         groupId: widget.groupChatId,
                         ),
                         ),

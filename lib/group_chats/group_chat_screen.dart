@@ -73,6 +73,7 @@ class _GroupChatHomeScreenState extends State<GroupChatHomeScreen> {
                     MaterialPageRoute(
                       builder: (_) => GroupChatRoom(
                         groupName: groupList[index]['name'],
+                        groupIsMain: groupList[index]['isMain'],
                         groupChatId: groupList[index]['id'],
                       ),
                     ),

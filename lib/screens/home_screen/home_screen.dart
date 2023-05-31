@@ -103,12 +103,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     child: authController.myUser.value.image!=null? CircleAvatar(
                     radius:
-                        SizerUtil.deviceType == DeviceType.tablet ? 12.w : 13.w,
+                        SizerUtil.deviceType == DeviceType.tablet ? 11.w : 12.w,
                     backgroundColor: kSecondaryColor,
                     backgroundImage:
                         NetworkImage(authController.myUser.value.image!),
                   ): Container(
-                        width: 120,
+                        width: 100,
                         height: 120,
                         margin: EdgeInsets.only(bottom: 20),
                         decoration: BoxDecoration(
